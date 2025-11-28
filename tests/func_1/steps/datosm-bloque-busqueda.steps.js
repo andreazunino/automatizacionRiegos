@@ -78,8 +78,16 @@ When('selecciono la estacion {string}', async function (estacion) {
   await this.datosPage.seleccionarEstacion(estacion);
 });
 
+When('quito la estacion {string} desde la cruz', async function (estacion) {
+  await this.datosPage.quitarEstacionPorCruz(estacion);
+});
+
 Then('{string} debe aparecer como seleccionada', async function (estacion) {
   await this.datosPage.estacionSeleccionada(estacion);
+});
+
+Then('{string} no debe aparecer como seleccionada', async function (estacion) {
+  await this.datosPage.estacionNoSeleccionada(estacion);
 });
 
 When('hago click en el boton {string}', async function (nombre) {

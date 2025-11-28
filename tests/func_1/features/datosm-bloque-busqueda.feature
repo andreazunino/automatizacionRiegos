@@ -47,3 +47,9 @@ Feature: Funcionamiento correcto del bloque de busqueda de datos meteorologicos
     And hago click en provincias "Alicante"
     And despliego las estaciones
     Then debo ver las estaciones "Valencia"
+
+  Scenario: Quitar una estación desde la cruz
+    When despliego las estaciones
+    And selecciono la estacion "Agost"
+    And quito la estacion "Agost" desde la cruz
+    Then "Agost" no debe aparecer como seleccionada
