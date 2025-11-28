@@ -16,7 +16,6 @@ setDefaultTimeout(60 * 1000);
 let browser: Browser;
 
 export class CustomWorld {
-    browser!: Browser;
     context!: BrowserContext;
     page!: Page;
     datosPage!: DatosMeteorologicosPage;
@@ -31,7 +30,6 @@ BeforeAll(async function () {
 });
 
 Before(async function (this: CustomWorld) {
-    this.browser = browser;
     this.context = await browser.newContext();
     this.page = await this.context.newPage();
     this.datosPage = new DatosMeteorologicosPage(this.page);
