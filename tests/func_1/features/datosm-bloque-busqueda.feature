@@ -14,6 +14,17 @@ Feature: Funcionamiento correcto del bloque de busqueda de datos meteorologicos
     And despliego las estaciones
     Then debo ver todas las estaciones
 
+  Scenario: Con estado "Activas", mostrarlas provincias Activas
+    When hago click en estado "Activas"
+    And despliego las estaciones
+    Then debo ver las estaciones Activas
+
+  Scenario: Cuando provincias "Alicante", mostrar estaciones Alicante
+    When hago click en provincias "Castellon"
+    And hago click en provincias "Valencia"
+    And despliego las estaciones
+    Then debo ver las estaciones "Alicante"
+
   Scenario: Seleccionar estacion
     When despliego las estaciones
     And selecciono la estacion "Agost"

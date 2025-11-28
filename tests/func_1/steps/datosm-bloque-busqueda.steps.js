@@ -62,6 +62,18 @@ Then('debo ver todas las estaciones', async function () {
   await this.datosPage.estacionesDesplegadasTodas();
 });
 
+When('hago click en provincias {string}', async function (provincia) {
+  await this.datosPage.seleccionarProvincia(provincia);
+});
+
+Then('debo ver las estaciones {string}', async function (provincia) {
+  await this.datosPage.estacionesProvinciaVisibles(provincia);
+});
+
+Then('debo ver las estaciones Activas', async function () {
+  await this.datosPage.estacionesActivasVisibles();
+});
+
 When('selecciono la estacion {string}', async function (estacion) {
   await this.datosPage.seleccionarEstacion(estacion);
 });

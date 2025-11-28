@@ -56,6 +56,23 @@ class DatosMeteorologicosPage {
     return (await desplegadas.locator('.multi-select-option').count()) > 2;
   }
 
+  async estacionesProvinciaVisibles(nombreProvincia) {
+    const options = this.page.locator(`.multi-select-option:has-text("${nombreProvincia}")`);
+    await expect(options).toHaveCountGreaterThan(0);
+  }
+
+  async seleccionarProvincia(nombreProvincia) {
+    const checkbox = this.page.locator('.checkbox-card', { hasText: nombreProvincia });
+    await checkbox.locator('input[type="checkbox"]').check({ force: true });
+  }
+
+  async estacionesActivasVisibles() {
+    const count = await this.page
+      .locator('.multi-select-options .multi-select-option')
+      .count();
+    await expect(count).toBeGreaterThan(0);
+  }
+
   async desplegarEstaciones() {
     await this.page.locator('.multi-select-header').click();
   }
