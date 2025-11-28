@@ -1,3 +1,4 @@
+require('dotenv').config();
 const { chromium } = require('playwright');
 const {
   setWorldConstructor,
@@ -33,6 +34,7 @@ AfterAll(async () => {
 function CustomWorld() {
   this.context = null;
   this.page = null;
+  this.env = process.env;
 }
 
 setWorldConstructor(CustomWorld);

@@ -1,7 +1,12 @@
+require('dotenv').config();
+
 // Ejemplo simple de Playwright Test sin depender de red externa
 const { test, expect } = require('@playwright/test');
 
-test('home muestra titulo Playwright', async ({ page }) => {
+test('home muestra titulo Playwright', async ({ page, baseURL }) => {
+  // Ejemplo de uso de variable de entorno para construir la URL
+  const url = baseURL || process.env.URL || 'https://playwright.dev';
+  await page.goto(url);
   await page.setContent(`
     <header>
       <div class="navbar__title">Playwright Docs</div>

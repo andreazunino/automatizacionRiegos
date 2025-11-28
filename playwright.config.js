@@ -14,7 +14,8 @@ module.exports = defineConfig({
     ['html', { open: 'never', host: '0.0.0.0', port: 9223 }],
   ],
   use: {
-    baseURL: 'https://playwright.dev',
+    // Permite usar baseURL desde .env (Jenkins renombrará el env seleccionado a .env)
+    baseURL: process.env.URL || 'https://playwright.dev',
     headless: true,
     viewport: { width: 1280, height: 720 },
     trace: 'on-first-retry',

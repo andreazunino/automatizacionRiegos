@@ -5,8 +5,8 @@
   "type": "commonjs",
   "scripts": {
     "test": "cucumber-js --config cucumber.json",
-    "test:report": "cucumber-js --config cucumber.json --format json:./cucumber-report/report.json && node ./cucumber-report/generate-report.js"
-    ,"pw:test": "playwright test",
+    "test:report": "cucumber-js --config cucumber.json --format json:./cucumber-report/report.json && node ./cucumber-report/generate-report.js",
+    "pw:test": "playwright test",
     "pw:test:ui": "playwright test --ui",
     "pw:test:headed": "playwright test --headed",
     "pw:show-report": "playwright show-report"
@@ -17,5 +17,8 @@
     "chai": "^4.3.10",
     "cucumber-html-reporter": "^7.2.0",
     "playwright": "^1.41.2"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3"
   }
 }
