@@ -14,6 +14,17 @@ Feature: Funcionamiento correcto del bloque de busqueda de datos meteorologicos
     And despliego las estaciones
     Then debo ver todas las estaciones
 
+  Scenario: Seleccionar estacion
+    When despliego las estaciones
+    And selecciono la estacion "Agost"
+    Then "Agost" debe aparecer como seleccionada
+
+  Scenario: Eliminar todas las estaciones seleccionadas
+    When despliego las estaciones
+    And selecciono la estacion "Pedralba"
+    And hago click en el boton "Eliminar seleccion"
+    Then debe quitar todas las selecciones de estaciones
+
   Scenario: Con estado "Activas", mostrarlas provincias Activas
     When hago click en estado "Activas"
     And despliego las estaciones
@@ -25,13 +36,14 @@ Feature: Funcionamiento correcto del bloque de busqueda de datos meteorologicos
     And despliego las estaciones
     Then debo ver las estaciones "Alicante"
 
-  Scenario: Seleccionar estacion
-    When despliego las estaciones
-    And selecciono la estacion "Agost"
-    Then "Agost" debe aparecer como seleccionada
+  Scenario: Cuando provincias "Castellon", mostrar estaciones Castellon
+    When hago click en provincias "Alicante"
+    And hago click en provincias "Valencia"
+    And despliego las estaciones
+    Then debo ver las estaciones "Castellon"
 
-  Scenario: Eliminar todas las estaciones seleccionadas
-    When despliego las estaciones
-    And selecciono la estacion "Pedralba"
-    And hago click en el boton "Eliminar seleccion"
-    Then debe quitar todas las selecciones de estaciones
+  Scenario: Cuando provincias "Valencia", mostrar estaciones Valencia
+    When hago click en provincias "Castellon"
+    And hago click en provincias "Alicante"
+    And despliego las estaciones
+    Then debo ver las estaciones "Valencia"

@@ -5,7 +5,10 @@
     "strict": true,
     "esModuleInterop": true,
     "outDir": "dist",
-    "rootDir": "./"
+    "rootDir": "./",
+    "allowJs": true,
+    "noEmit": true
   },
-  "include": ["**/*.ts"]
+  "include": ["pages/**/*.js", "tests/**/*.js"],
+  "exclude": ["node_modules", "dist"]
 }
