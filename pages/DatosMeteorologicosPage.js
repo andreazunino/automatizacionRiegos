@@ -44,16 +44,18 @@ class DatosMeteorologicosPage {
       posiblesNombres.push('Eliminar selección');
     }
 
-    const candidatos = [
-      this.page.getByRole('button', { name: new RegExp(posiblesNombres.join('|'), 'i') }),
-      this.page.locator('#clear-all-btn'),
-    ];
+    const btnClear = this.page.locator('#clear-all-btn');
+    if (await btnClear.count()) {
+      await btnClear.first().waitFor({ state: 'visible', timeout: 10000 });
+      await expect(btnClear.first()).toBeVisible();
+      return;
+    }
 
-    for (const candidato of candidatos) {
-      if ((await candidato.count()) > 0) {
-        await expect(candidato.first()).toBeVisible();
-        return;
-      }
+    const rolBtn = this.page.getByRole('button', { name: new RegExp(posiblesNombres.join('|'), 'i') });
+    if (await rolBtn.count()) {
+      await rolBtn.first().waitFor({ state: 'visible', timeout: 10000 });
+      await expect(rolBtn.first()).toBeVisible();
+      return;
     }
 
     throw new Error(`Boton "${nombre}" no encontrado con selectores conocidos`);
@@ -101,11 +103,17 @@ class DatosMeteorologicosPage {
 
   async seleccionarProvincia(nombreProvincia) {
     const nombre = this.provinciaPattern(nombreProvincia);
-    const checkbox = this.page
+    // Asegura que el bloque de filtros esté cargado (primer filtro de provincias)
+    const filtro = this.page.locator('div#filtroBusqueda').first();
+    await filtro.waitFor({ state: 'attached', timeout: 10000 });
+    await filtro.waitFor({ state: 'visible', timeout: 10000 });
+
+    const checkbox = filtro
       .locator('.checkbox-card')
       .filter({ hasText: new RegExp(nombre, 'i') })
       .locator('input[type="checkbox"]');
-    await checkbox.first().check({ force: true });
+    await checkbox.first().scrollIntoViewIfNeeded();
+    await checkbox.first().check({ force: true, timeout: 10000 });
     await this.esperarLoader();
   }
 
@@ -128,18 +136,44 @@ class DatosMeteorologicosPage {
   }
 
   async seleccionarEstacion(estacion) {
-    await this.page
-      .locator(`.multi-select-option:has(.multi-select-option-text:text("${estacion}"))`)
-      .click();
+    // Asegura que el desplegable esté abierto
+    const header = this.page.locator('.multi-select-header');
+    const contenedor = this.page.locator('.multi-select-options');
+    if (await header.count()) {
+      await header.click();
+    }
+
+    if (await contenedor.count()) {
+      // reintenta abrir hasta que sea visible
+      for (let i = 0; i < 3; i++) {
+        if (await contenedor.first().isVisible()) break;
+        if (await header.count()) {
+          await header.click();
+        }
+        await this.page.waitForTimeout(500);
+      }
+      await contenedor.first().waitFor({ state: 'visible', timeout: 15000 });
+    }
+
+    const option = this.page
+      .locator('.multi-select-option')
+      .filter({ hasText: new RegExp(estacion, 'i') });
+
+    await option.first().scrollIntoViewIfNeeded();
+    await option.first().click({ force: true, timeout: 15000 });
   }
 
   async estacionSeleccionada(estacion) {
-    const seleccionada = this.page.locator(`.minicard-selected:has-text("${estacion}")`);
-    await expect(seleccionada).toBeVisible();
+    const seleccionada = this.page
+      .locator('.minicard-selected')
+      .filter({ hasText: new RegExp(estacion, 'i') });
+    await expect(seleccionada.first()).toBeVisible();
   }
 
   async quitarEstacionPorCruz(estacion) {
-    const card = this.page.locator(`.minicard-selected:has-text("${estacion}")`);
+    const card = this.page
+      .locator('.minicard-selected')
+      .filter({ hasText: new RegExp(estacion, 'i') });
     await expect(card).toBeVisible();
     const closeBtn = card
       .locator(
@@ -150,7 +184,9 @@ class DatosMeteorologicosPage {
   }
 
   async estacionNoSeleccionada(estacion) {
-    const seleccionada = this.page.locator(`.minicard-selected:has-text("${estacion}")`);
+    const seleccionada = this.page
+      .locator('.minicard-selected')
+      .filter({ hasText: new RegExp(estacion, 'i') });
     await expect(seleccionada).toHaveCount(0);
   }
 
@@ -159,6 +195,152 @@ class DatosMeteorologicosPage {
       state: 'visible',
       timeout: 3000,
     });
+  }
+
+  // --- Bloque periodo/fechas ---
+  async seleccionarPeriodo(valor) {
+    const select = this.page.locator('#rangoTemporal');
+    await expect(select).toBeVisible();
+    await select.selectOption(valor);
+  }
+
+  async completarRangoHorarios(rangoTexto) {
+    const input = this.page.locator('#picker-horario-range');
+    await expect(input).toBeVisible();
+    await input.fill('');
+    await input.fill(rangoTexto);
+    await this.page.locator('#picker-horario-range').blur();
+  }
+
+  async validarDiasHorarios(expectedDias) {
+    const dias = this.page.locator('#textHorarios');
+    await expect(dias).toBeVisible();
+    await expect(dias).toHaveText(String(expectedDias));
+  }
+
+  async completarRangoPersonalizado(rangoTexto) {
+    // Asegura que el select este en "diarios"
+    const select = this.page.locator('#rangoTemporal');
+    if (await select.count()) {
+      await select.selectOption('diarios');
+    }
+
+    const input = this.page.locator('#picker-day-range');
+    const contenedor = this.page.locator('#diaRango');
+    if (await contenedor.count()) {
+      await contenedor.first().waitFor({ state: 'visible', timeout: 10000 });
+    }
+    await input.waitFor({ state: 'attached', timeout: 10000 });
+    await this.page.waitForFunction(
+      (id) => {
+        const el = document.querySelector(id);
+        return !!el && !el.disabled && el.offsetParent !== null;
+      },
+      '#picker-day-range',
+      { timeout: 15000 }
+    );
+    await expect(input).toBeVisible({ timeout: 15000 });
+    await expect(input).toBeEnabled({ timeout: 15000 });
+    await input.fill('');
+    await input.fill(rangoTexto);
+    await input.blur();
+  }
+
+  async validarDiasPersonalizados(expectedDias) {
+    const dias = this.page.locator('#textDias');
+    await expect(dias).toBeVisible();
+    await expect(dias).toHaveText(String(expectedDias));
+  }
+
+  async completarRangoSemanal(rangoTexto) {
+    const input = this.page.locator('#picker-semana');
+    await expect(input).toBeVisible();
+    await input.fill('');
+    await input.fill(rangoTexto);
+    await input.blur();
+  }
+
+  async validarDiasSemanales(expectedDias) {
+    const dias = this.page.locator('#textSemanas');
+    await expect(dias).toBeVisible({ timeout: 10000 });
+    await this.page.waitForFunction(
+      (el) => el.innerText.trim().length > 0,
+      dias,
+      { timeout: 15000 }
+    );
+    await expect(dias).toHaveText(String(expectedDias));
+  }
+
+  async completarRangoMensual(rangoTexto) {
+    const input = this.page.locator('#picker-mes');
+    await expect(input).toBeVisible();
+    await input.fill('');
+    await input.fill(rangoTexto);
+    await input.blur();
+  }
+
+  async validarMeses(expectedMeses) {
+    const meses = this.page.locator('#textMes');
+    await expect(meses).toBeVisible();
+    await expect(meses).toHaveText(String(expectedMeses));
+  }
+
+  async completarRangoAnual(rangoTexto) {
+    const input = this.page.locator('#picker-anyo');
+    await expect(input).toBeVisible();
+    await input.fill('');
+    await input.fill(rangoTexto);
+    await input.blur();
+  }
+
+  async validarAnos(expectedAnos) {
+    const anos = this.page.locator('#textAnyos');
+    await expect(anos).toBeVisible();
+    await expect(anos).toHaveText(String(expectedAnos));
+  }
+
+  async clickCalcular() {
+    const boton = this.page.locator('#calcular');
+    await expect(boton).toBeVisible();
+    await boton.click();
+  }
+
+  async esperarGraficaTemperatura() {
+    const grafica = this.page.locator('#grafica1');
+    await grafica.waitFor({ state: 'visible', timeout: 60000 });
+    await expect(grafica).toBeVisible({ timeout: 60000 });
+  }
+
+  async clickResetear() {
+    const boton = this.page.locator('#limpiarRangos');
+    await expect(boton).toBeVisible();
+    await boton.click();
+  }
+
+  async validarCamposPeriodoReseteados() {
+    // Select vuelve al placeholder
+    const select = this.page.locator('#rangoTemporal');
+    await expect(await select.inputValue()).toBe('');
+
+    // Inputs de rango vacíos
+    const inputs = ['#picker-horario-range', '#picker-day-range', '#picker-semana', '#picker-mes', '#picker-anyo'];
+    for (const sel of inputs) {
+      const input = this.page.locator(sel);
+      if (await input.count()) {
+        const val = await input.inputValue();
+        expect(val).toBe('');
+      }
+    }
+
+    // Textos de resumen vacíos o en 0
+    const resumenes = ['#textHorarios', '#textDias', '#textSemanas', '#textMes', '#textAnyos'];
+    for (const sel of resumenes) {
+      const span = this.page.locator(sel);
+      if (await span.count()) {
+        const text = (await span.innerText()).trim();
+        expect(['', '0']).toContain(text);
+      }
+    }
   }
 }
 
