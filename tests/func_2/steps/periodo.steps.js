@@ -4,43 +4,46 @@ const { Given, When, Then } = require('@cucumber/cucumber');
 // Aqui solo manejamos el bloque de periodo/fechas
 
 When('selecciono el periodo {string}', async function (valor) {
+  this.periodoSeleccionado = valor.toLowerCase(); 
   await this.datosPage.seleccionarPeriodo(valor);
 });
 
-When('completo el rango horario {string}', async function (rango) {
-  await this.datosPage.completarRangoHorarios(rango);
+When('completo el rango de tiempo {string}', async function (rango) {
+  switch (this.periodoSeleccionado) {
+    case 'horarios':
+      await this.datosPage.completarRangoHorarios(rango);
+      break;
+    case 'diarios':
+      await this.datosPage.completarRangoPersonalizado(rango);
+      break;
+    case 'semanales':
+      await this.datosPage.completarRangoSemanal(rango);
+      break;
+    case 'mensuales':
+      await this.datosPage.completarRangoMensual(rango);
+      break;
+    case 'anuales':
+      await this.datosPage.completarRangoAnual(rango);
+      break;
+    default:
+      throw new Error('No se reconoce el periodo seleccionado: ${this.periodoSeleccionado}');
+  }
 });
 
 Then('el campo dias horarios muestra {string}', async function (dias) {
   await this.datosPage.validarDiasHorarios(dias);
 });
 
-When('completo el rango personalizado {string}', async function (rango) {
-  await this.datosPage.completarRangoPersonalizado(rango);
-});
-
 Then('el campo dias personalizados muestra {string}', async function (dias) {
   await this.datosPage.validarDiasPersonalizados(dias);
-});
-
-When('completo el rango semanal {string}', async function (rango) {
-  await this.datosPage.completarRangoSemanal(rango);
 });
 
 Then('el campo dias semanales muestra {string}', async function (dias) {
   await this.datosPage.validarDiasSemanales(dias);
 });
 
-When('completo el rango mensual {string}', async function (rango) {
-  await this.datosPage.completarRangoMensual(rango);
-});
-
 Then('el campo meses muestra {string}', async function (meses) {
   await this.datosPage.validarMeses(meses);
-});
-
-When('completo el rango anual {string}', async function (rango) {
-  await this.datosPage.completarRangoAnual(rango);
 });
 
 Then('el campo anos muestra {string}', async function (anos) {
