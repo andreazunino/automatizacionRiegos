@@ -9,10 +9,7 @@ When('espero la grafica de {string}', async function (tipo) {
 });
 
 Then('se muestra la grafica {string}', async function (tipo) {
-  const cont = this.page.locator('#graficaContainer');
-
-  // Asegura que el contenedor tiene algo dibujado
   await expect(
-    cont.locator('.highcharts-container, svg, canvas, .grafica')
-  ).toBeVisible({ timeout: 10000 });
+    this.page.locator('#graficaContainer .grafica-contenedor figure')
+  ).toBeVisible();
 });

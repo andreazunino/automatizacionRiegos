@@ -410,70 +410,45 @@ class DatosMeteorologicosPage {
     await this.esperarLoader();
 
     const contenedor = this.page.locator('#graficaContainer');
-    await contenedor.waitFor({ state: 'attached', timeout: 60000 });
+    await contenedor.waitFor({ state: 'visible', timeout: 60000 });
 
-    // Forzar visibilidad si estaba oculto
-    await this.page.evaluate(() => {
-      const cont = document.getElementById('graficaContainer');
-      if (cont && window.getComputedStyle(cont).display === 'none') {
-        cont.style.display = 'block';
-      }
-      const tabs = document.getElementById('tabs-parametros-graficas');
-      if (tabs && window.getComputedStyle(tabs).display === 'none') {
-        tabs.style.display = 'flex';
-      }
+    await contenedor.scrollIntoViewIfNeeded();
+
+    const radios = {
+      temperatura: "#radio1",
+      precipitacion: "#radio2",
+      velocidad_viento: "#radio3",
+      direccion_viento: "#radio4"
+    };
+
+    const graficas = {
+      temperatura: "#grafica1",
+      precipitacion: "#grafica2",
+      velocidad_viento: "#grafica3",
+      direccion_viento: "#grafica4"
+    };
+
+    const radio = radios[tipo];
+    const grafica = graficas[tipo];
+
+    if (!radio || !grafica) {
+      throw new Error(`Tipo de gráfica desconocido: ${tipo}`);
+    }
+
+    await this.page.click(radio);
+
+    await this.page.waitForSelector('#graficaContainer figure', {
+      state: 'visible',
+      timeout: 60000
     });
 
-    // Asegurar visibilidad
-    if (await contenedor.isVisible()) {
-      await contenedor.scrollIntoViewIfNeeded();
-    }
-
-    try {
-      // Esperar Highcharts / SVG / canvas / elementos dinámicos
-      await this.page.waitForFunction(
-        (tipo) => {
-          const container = document.querySelector('#graficaContainer');
-          if (!container) return false;
-
-          const selectorTipo = `.grafica-${tipo}`;
-          const existeTipo = container.querySelector(selectorTipo);
-
-          return (
-            existeTipo ||
-            container.querySelector('.highcharts-container') ||
-            container.querySelector('.grafica') ||
-            container.querySelector('svg') ||
-            container.querySelector('canvas') ||
-            container.children.length > 0
-          );
-        },
-        tipo,
-        { timeout: 60000 }
-      );
-    } catch (_) {
-      // Fallback en caso de que la gráfica no exista
-      await this.page.evaluate((tipo) => {
-        const container = document.querySelector('#graficaContainer');
-        const id = `grafica-${tipo}`;
-
-        if (container && !container.querySelector(`#${id}`)) {
-          const placeholder = document.createElement('div');
-          placeholder.id = id;
-          placeholder.className = `grafica placeholder grafica-${tipo}`;
-          placeholder.textContent = 'Gráfica no disponible';
-          container.appendChild(placeholder);
-        }
-      }, tipo);
-
-      await this.page.waitForFunction(
-        () => {
-          const container = document.querySelector('#graficaContainer');
-          return !!container && container.children.length > 0;
-        },
-        { timeout: 10000 }
-      );
-    }
+    // Esperar que la gráfica correspondiente sea visible (sin display: none)
+    await this.page.waitForFunction((selector) => {
+      const el = document.querySelector(selector);
+      if (!el) return false;
+      const style = window.getComputedStyle(el);
+      return style.display !== 'none' && el.offsetHeight > 0;
+    }, grafica, { timeout: 60000 });
   }
 
   async validarCamposPeriodoReseteados() {
