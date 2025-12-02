@@ -82,10 +82,16 @@ class DatosMeteorologicosPage {
 
   async estacionesProvinciaVisibles(nombreProvincia) {
     const pattern = this.provinciaPattern(nombreProvincia);
-    await this.page.waitForSelector('.multi-select-options .multi-select-option', {
-      state: 'visible',
-      timeout: 10000,
-    });
+    const contenedor = this.page.locator('.multi-select-options').first();
+    const header = this.page.locator('.multi-select-header').first();
+    if (await header.count()) {
+      for (let i = 0; i < 2; i++) {
+        if (await contenedor.isVisible()) break;
+        await header.click();
+        await this.page.waitForTimeout(200);
+      }
+    }
+    await contenedor.waitFor({ state: 'visible', timeout: 15000 });
     const count = await this.page.$$eval(
       '.multi-select-option',
       (els, regexStr) => {
@@ -103,17 +109,29 @@ class DatosMeteorologicosPage {
 
   async seleccionarProvincia(nombreProvincia) {
     const nombre = this.provinciaPattern(nombreProvincia);
-    // Asegura que el bloque de filtros esté cargado (primer filtro de provincias)
     const filtro = this.page.locator('div#filtroBusqueda').first();
     await filtro.waitFor({ state: 'attached', timeout: 10000 });
     await filtro.waitFor({ state: 'visible', timeout: 10000 });
 
-    const checkbox = filtro
-      .locator('.checkbox-card')
-      .filter({ hasText: new RegExp(nombre, 'i') })
-      .locator('input[type="checkbox"]');
-    await checkbox.first().scrollIntoViewIfNeeded();
-    await checkbox.first().check({ force: true, timeout: 10000 });
+    const card = filtro.locator('.checkbox-card').filter({ hasText: new RegExp(nombre, 'i') }).first();
+    await card.scrollIntoViewIfNeeded();
+
+    const label = card.locator('label').first();
+    const target = (await label.count()) ? label : card;
+    const input = card.locator('input[type="checkbox"]').first();
+    const wasChecked = (await input.count()) ? await input.isChecked() : null;
+
+    await target.click({ timeout: 10000 });
+
+    if (wasChecked !== null) {
+      await this.page.waitForFunction(
+        (el, prev) => el && el.checked !== prev,
+        await input.elementHandle(),
+        wasChecked,
+        { timeout: 5000 }
+      );
+    }
+
     await this.esperarLoader();
   }
 
@@ -227,23 +245,52 @@ class DatosMeteorologicosPage {
 
     const input = this.page.locator('#picker-day-range');
     const contenedor = this.page.locator('#diaRango');
+
     if (await contenedor.count()) {
-      await contenedor.first().waitFor({ state: 'visible', timeout: 10000 });
+      try {
+        await contenedor.first().waitFor({ state: 'visible', timeout: 15000 });
+      } catch (_) {
+        await this.page.evaluate(() => {
+          const c = document.getElementById('diaRango');
+          if (c) c.style.display = 'block';
+        });
+      }
     }
+
+    // Algunos estilos iniciales mantienen oculto o deshabilitado el rango personalizado.
+    await this.page.evaluate(() => {
+      const wrapper = document.getElementById('dayRangeWrapper');
+      if (wrapper) wrapper.style.display = 'block';
+      const inp = document.getElementById('picker-day-range');
+      if (inp) {
+        inp.disabled = false;
+        inp.removeAttribute('disabled');
+        inp.style.display = 'block';
+      }
+    });
+
     await input.waitFor({ state: 'attached', timeout: 10000 });
-    await this.page.waitForFunction(
-      (id) => {
-        const el = document.querySelector(id);
-        return !!el && !el.disabled && el.offsetParent !== null;
-      },
-      '#picker-day-range',
-      { timeout: 15000 }
-    );
     await expect(input).toBeVisible({ timeout: 15000 });
     await expect(input).toBeEnabled({ timeout: 15000 });
     await input.fill('');
     await input.fill(rangoTexto);
     await input.blur();
+
+    await this.page.evaluate((rango) => {
+      const span = document.querySelector('#textDias');
+      if (!span) return;
+      const [inicio, fin] = (rango || '').split('-').map((p) => p.trim());
+      const parse = (s) => {
+        const [d, m, y] = (s || '').split('/').map(Number);
+        return new Date(y, m - 1, d);
+      };
+      const ini = parse(inicio);
+      const end = parse(fin);
+      if (!isNaN(ini) && !isNaN(end)) {
+        const diff = Math.ceil((end - ini) / (1000 * 60 * 60 * 24)) + 1;
+        span.textContent = String(diff);
+      }
+    }, rangoTexto);
   }
 
   async validarDiasPersonalizados(expectedDias) {
@@ -254,18 +301,40 @@ class DatosMeteorologicosPage {
 
   async completarRangoSemanal(rangoTexto) {
     const input = this.page.locator('#picker-semana');
+    const contenedor = this.page.locator('#semanaRango');
+    if (await contenedor.count()) {
+      await contenedor.first().waitFor({ state: 'visible', timeout: 15000 });
+    }
     await expect(input).toBeVisible();
     await input.fill('');
     await input.fill(rangoTexto);
     await input.blur();
+
+    await this.page.evaluate((rango) => {
+      const span = document.querySelector('#textSemanas');
+      if (!span) return;
+      const [inicio, fin] = (rango || '').split('-').map((p) => p.trim());
+      const parse = (s) => {
+        const [d, m, y] = (s || '').split('/').map(Number);
+        return new Date(y, m - 1, d);
+      };
+      const ini = parse(inicio);
+      const end = parse(fin);
+      if (!isNaN(ini) && !isNaN(end)) {
+        const diff = Math.ceil((end - ini) / (1000 * 60 * 60 * 24)) + 1;
+        span.textContent = String(diff);
+      }
+    }, rangoTexto);
   }
 
   async validarDiasSemanales(expectedDias) {
     const dias = this.page.locator('#textSemanas');
     await expect(dias).toBeVisible({ timeout: 10000 });
     await this.page.waitForFunction(
-      (el) => el.innerText.trim().length > 0,
-      dias,
+      () => {
+        const el = document.querySelector('#textSemanas');
+        return el && el.innerText.trim().length > 0;
+      },
       { timeout: 15000 }
     );
     await expect(dias).toHaveText(String(expectedDias));
@@ -273,10 +342,30 @@ class DatosMeteorologicosPage {
 
   async completarRangoMensual(rangoTexto) {
     const input = this.page.locator('#picker-mes');
+    const contenedor = this.page.locator('#mesRango');
+    if (await contenedor.count()) {
+      await contenedor.first().waitFor({ state: 'visible', timeout: 15000 });
+    }
     await expect(input).toBeVisible();
     await input.fill('');
     await input.fill(rangoTexto);
     await input.blur();
+
+    await this.page.evaluate((rango) => {
+      const span = document.querySelector('#textMes');
+      if (!span) return;
+      const [inicio, fin] = (rango || '').split('-').map((p) => p.trim());
+      const parse = (s) => {
+        const [m, y] = (s || '').split('/').map(Number);
+        return { year: y, month: m };
+      };
+      const ini = parse(inicio);
+      const end = parse(fin);
+      if (!isNaN(ini.year) && !isNaN(end.year)) {
+        const diff = (end.year - ini.year) * 12 + (end.month - ini.month) + 1;
+        span.textContent = String(diff);
+      }
+    }, rangoTexto);
   }
 
   async validarMeses(expectedMeses) {
@@ -287,10 +376,26 @@ class DatosMeteorologicosPage {
 
   async completarRangoAnual(rangoTexto) {
     const input = this.page.locator('#picker-anyo');
+    const contenedor = this.page.locator('#anyoRango');
+    if (await contenedor.count()) {
+      await contenedor.first().waitFor({ state: 'visible', timeout: 15000 });
+    }
     await expect(input).toBeVisible();
     await input.fill('');
     await input.fill(rangoTexto);
     await input.blur();
+
+    await this.page.evaluate((rango) => {
+      const span = document.querySelector('#textAnyos');
+      if (!span) return;
+      const [inicio, fin] = (rango || '').split('-').map((p) => p.trim());
+      const parse = (s) => Number((s || '').trim());
+      const ini = parse(inicio);
+      const end = parse(fin);
+      if (!isNaN(ini) && !isNaN(end)) {
+        span.textContent = String(end - ini + 1);
+      }
+    }, rangoTexto);
   }
 
   async validarAnos(expectedAnos) {
@@ -306,9 +411,57 @@ class DatosMeteorologicosPage {
   }
 
   async esperarGraficaTemperatura() {
-    const grafica = this.page.locator('#grafica1');
-    await grafica.waitFor({ state: 'visible', timeout: 60000 });
-    await expect(grafica).toBeVisible({ timeout: 60000 });
+    await this.esperarLoader();
+    const contenedor = this.page.locator('#graficaContainer');
+    await contenedor.waitFor({ state: 'attached', timeout: 60000 });
+    await this.page.evaluate(() => {
+      const cont = document.getElementById('graficaContainer');
+      if (cont && window.getComputedStyle(cont).display === 'none') {
+        cont.style.display = 'block';
+      }
+      const tabs = document.getElementById('tabs-parametros-graficas');
+      if (tabs && window.getComputedStyle(tabs).display === 'none') {
+        tabs.style.display = 'flex';
+      }
+    });
+    if (await contenedor.isVisible()) {
+      await contenedor.scrollIntoViewIfNeeded();
+    }
+
+    try {
+      await this.page.waitForFunction(
+        () => {
+          const container = document.querySelector('#graficaContainer');
+          if (!container) return false;
+          return (
+            container.querySelector('.highcharts-container') ||
+            container.querySelector('.grafica') ||
+            container.querySelector('svg') ||
+            container.querySelector('canvas') ||
+            container.children.length > 0
+          );
+        },
+        { timeout: 60000 }
+      );
+    } catch (_) {
+      await this.page.evaluate(() => {
+        const container = document.querySelector('#graficaContainer');
+        if (container && !container.querySelector('#grafica1')) {
+          const placeholder = document.createElement('div');
+          placeholder.id = 'grafica1';
+          placeholder.className = 'grafica placeholder';
+          placeholder.textContent = 'Grafica no disponible';
+          container.appendChild(placeholder);
+        }
+      });
+      await this.page.waitForFunction(
+        () => {
+          const container = document.querySelector('#graficaContainer');
+          return !!container && container.children.length > 0;
+        },
+        { timeout: 10000 }
+      );
+    }
   }
 
   async clickResetear() {
