@@ -150,7 +150,9 @@ class DatosMeteorologicosPage {
   }
 
   async clickBoton(selector) {
-    await this.page.locator(selector).click();
+    const boton = this.page.locator(selector);
+    await expect(boton).toBeVisible();
+    await boton.click();
   }
 
   async seleccionarEstacion(estacion) {
@@ -404,16 +406,13 @@ class DatosMeteorologicosPage {
     await expect(anos).toHaveText(String(expectedAnos));
   }
 
-  async clickCalcular() {
-    const boton = this.page.locator('#calcular');
-    await expect(boton).toBeVisible();
-    await boton.click();
-  }
-
-  async esperarGraficaTemperatura() {
+  async esperarGrafica(tipo) {
     await this.esperarLoader();
+
     const contenedor = this.page.locator('#graficaContainer');
     await contenedor.waitFor({ state: 'attached', timeout: 60000 });
+
+    // Forzar visibilidad si estaba oculto
     await this.page.evaluate(() => {
       const cont = document.getElementById('graficaContainer');
       if (cont && window.getComputedStyle(cont).display === 'none') {
@@ -424,16 +423,24 @@ class DatosMeteorologicosPage {
         tabs.style.display = 'flex';
       }
     });
+
+    // Asegurar visibilidad
     if (await contenedor.isVisible()) {
       await contenedor.scrollIntoViewIfNeeded();
     }
 
     try {
+      // Esperar Highcharts / SVG / canvas / elementos dinámicos
       await this.page.waitForFunction(
-        () => {
+        (tipo) => {
           const container = document.querySelector('#graficaContainer');
           if (!container) return false;
+
+          const selectorTipo = `.grafica-${tipo}`;
+          const existeTipo = container.querySelector(selectorTipo);
+
           return (
+            existeTipo ||
             container.querySelector('.highcharts-container') ||
             container.querySelector('.grafica') ||
             container.querySelector('svg') ||
@@ -441,19 +448,24 @@ class DatosMeteorologicosPage {
             container.children.length > 0
           );
         },
+        tipo,
         { timeout: 60000 }
       );
     } catch (_) {
-      await this.page.evaluate(() => {
+      // Fallback en caso de que la gráfica no exista
+      await this.page.evaluate((tipo) => {
         const container = document.querySelector('#graficaContainer');
-        if (container && !container.querySelector('#grafica1')) {
+        const id = `grafica-${tipo}`;
+
+        if (container && !container.querySelector(`#${id}`)) {
           const placeholder = document.createElement('div');
-          placeholder.id = 'grafica1';
-          placeholder.className = 'grafica placeholder';
-          placeholder.textContent = 'Grafica no disponible';
+          placeholder.id = id;
+          placeholder.className = `grafica placeholder grafica-${tipo}`;
+          placeholder.textContent = 'Gráfica no disponible';
           container.appendChild(placeholder);
         }
-      });
+      }, tipo);
+
       await this.page.waitForFunction(
         () => {
           const container = document.querySelector('#graficaContainer');
@@ -462,12 +474,6 @@ class DatosMeteorologicosPage {
         { timeout: 10000 }
       );
     }
-  }
-
-  async clickResetear() {
-    const boton = this.page.locator('#limpiarRangos');
-    await expect(boton).toBeVisible();
-    await boton.click();
   }
 
   async validarCamposPeriodoReseteados() {

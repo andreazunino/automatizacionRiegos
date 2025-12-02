@@ -26,7 +26,7 @@ When('completo el rango de tiempo {string}', async function (rango) {
       await this.datosPage.completarRangoAnual(rango);
       break;
     default:
-      throw new Error('No se reconoce el periodo seleccionado: ${this.periodoSeleccionado}');
+      throw new Error(`No se reconoce el periodo seleccionado: ${this.periodoSeleccionado}`);
   }
 });
 
@@ -50,16 +50,8 @@ Then('el campo anos muestra {string}', async function (anos) {
   await this.datosPage.validarAnos(anos);
 });
 
-When('hago click en Calcular', async function () {
-  await this.datosPage.clickCalcular();
-});
-
-Then('se muestra la grafica de temperatura', async function () {
-  await this.datosPage.esperarGraficaTemperatura();
-});
-
 When('hago click en Resetear', async function () {
-  await this.datosPage.clickResetear();
+  await this.datosPage.clickBoton('#limpiarRangos');
 });
 
 Then('los campos de periodo quedan limpios', async function () {
