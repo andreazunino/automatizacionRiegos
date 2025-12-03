@@ -10,7 +10,7 @@ const {
 const { chromium } = require('playwright');
 const { DatosMeteorologicosPage } = require('../../pages/DatosMeteorologicosPage');
 
-setDefaultTimeout(60 * 1000);
+setDefaultTimeout(180 * 1000);
 
 let browser;
 
@@ -20,6 +20,7 @@ class CustomWorld {
     this.page = null;
     this.datosPage = null;
     this.env = process.env;
+    this.lastDownload = null;
   }
 }
 

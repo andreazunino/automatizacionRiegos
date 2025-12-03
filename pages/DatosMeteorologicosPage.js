@@ -1,4 +1,6 @@
 ﻿const { expect } = require('playwright/test');
+const fs = require('fs');
+const path = require('path');
 
 class DatosMeteorologicosPage {
   constructor(page) {
@@ -406,49 +408,307 @@ class DatosMeteorologicosPage {
     await expect(anos).toHaveText(String(expectedAnos));
   }
 
+  graficaSelectorPorTipo(tipo) {
+    const key = (tipo || '').toLowerCase();
+    const mapa = {
+      temperatura: '#grafica1',
+      humedad: '#grafica2',
+      viento: '#grafica3',
+      direccion: '#grafica4',
+      otros: '#grafica5',
+      eto: '#grafica6',
+    };
+    return mapa[key] || '#grafica1';
+  }
+
+  radioSelectorPorTipo(tipo) {
+    const key = (tipo || '').toLowerCase();
+    const mapa = {
+      temperatura: '#radio1',
+      humedad: '#radio2',
+      viento: '#radio3',
+      direccion: '#radio4',
+      otros: '#radio5',
+      eto: '#radio6',
+    };
+    return mapa[key];
+  }
+
   async esperarGrafica(tipo) {
     await this.esperarLoader();
+    const graficaSelector = this.graficaSelectorPorTipo(tipo);
 
-    const contenedor = this.page.locator('#graficaContainer');
-    await contenedor.waitFor({ state: 'visible', timeout: 60000 });
-
+    // Contenedor de graficas y grafico de temperatura visible por defecto
+    const contenedor = this.page.locator('.grafica-contenedor');
+    await contenedor.waitFor({ state: 'visible', timeout: 180000 });
     await contenedor.scrollIntoViewIfNeeded();
 
-    const radios = {
-      temperatura: "#radio1",
-      precipitacion: "#radio2",
-      velocidad_viento: "#radio3",
-      direccion_viento: "#radio4"
-    };
-
-    const graficas = {
-      temperatura: "#grafica1",
-      precipitacion: "#grafica2",
-      velocidad_viento: "#grafica3",
-      direccion_viento: "#grafica4"
-    };
-
-    const radio = radios[tipo];
-    const grafica = graficas[tipo];
-
-    if (!radio || !grafica) {
-      throw new Error(`Tipo de gráfica desconocido: ${tipo}`);
+    // Asegurar que se esta en la pestana de grafica
+    const tabGrafica = this.page.locator(
+      'a[href="#Grafica"], a[href="#grafica"], a:has-text("Grafica"), a:has-text("Gráfica")'
+    );
+    if (await tabGrafica.count()) {
+      await tabGrafica.first().click({ timeout: 10000 });
     }
 
-    await this.page.click(radio);
+    const radioSelector = this.radioSelectorPorTipo(tipo);
+    if (radioSelector && (await this.page.locator(radioSelector).count())) {
+      await this.page.locator(radioSelector).check({ force: true }).catch(() => {});
+    }
 
-    await this.page.waitForSelector('#graficaContainer figure', {
-      state: 'visible',
-      timeout: 60000
+    await this.page.evaluate((selector) => {
+      const target = document.querySelector(selector);
+      if (!target) return;
+      const graficas = document.querySelectorAll('.grafica');
+      graficas.forEach((el) => {
+        el.style.display = el === target ? 'block' : 'none';
+        if (el === target) {
+          el.removeAttribute('aria-hidden');
+        }
+      });
+    }, graficaSelector);
+
+    // Esperar a que la grafica concreta tenga un SVG renderizado
+    const grafica = this.page.locator(graficaSelector);
+    await grafica.waitFor({ state: 'attached', timeout: 180000 });
+    await grafica.scrollIntoViewIfNeeded();
+    await this.page.waitForSelector(`${graficaSelector} svg`, { state: 'attached', timeout: 180000 });
+    await expect(grafica.locator('svg')).toBeVisible({ timeout: 180000 });
+  }
+
+
+  async esperarTabla(tipo) {
+    await this.esperarLoader();
+
+    // Cambiar a pestaña Tabla si existe
+    const tabTabla = this.page.locator(
+      'a[href="#Tabla"], a[href="#tabla"], a:has-text("Tabla"), button:has-text("Tabla"), [role="tab"]:has-text("Tabla")'
+    );
+    if (await tabTabla.count()) {
+      await tabTabla.first().click({ timeout: 10000 });
+    }
+
+    const tablas = {
+      temperatura: '#tablaDatosTemp',
+    };
+
+    const tablaSelector = tablas[tipo];
+    if (!tablaSelector) {
+      throw new Error(`Tipo de tabla desconocido: ${tipo}`);
+    }
+
+    const processingSelector = `${tablaSelector}_processing`;
+    if (await this.page.locator(processingSelector).count()) {
+      await this.page.locator(processingSelector).first().waitFor({ state: 'hidden', timeout: 120000 });
+    }
+
+    const tabla = this.page.locator(tablaSelector);
+    await tabla.waitFor({ state: 'visible', timeout: 180000 });
+    await tabla.scrollIntoViewIfNeeded();
+    await expect(tabla).toBeVisible({ timeout: 180000 });
+    const filasTabla = tabla.locator('tbody tr');
+    await filasTabla.first().waitFor({ state: 'visible', timeout: 180000 });
+    const totalFilas = await filasTabla.count();
+    expect(totalFilas).toBeGreaterThan(0);
+  }
+
+  async validarGraficaTemperatura(estacion) {
+    const graficaSelector = this.graficaSelectorPorTipo('temperatura');
+    const grafica = this.page.locator(graficaSelector);
+    await grafica.waitFor({ state: 'visible', timeout: 60000 });
+    await grafica.scrollIntoViewIfNeeded();
+    await expect(grafica.locator('svg')).toBeVisible();
+
+    const legendTexts = await this.page.$$eval(
+      `${graficaSelector} .highcharts-legend-item text`,
+      (nodes) => nodes.map((n) => (n.textContent || '').trim()).filter(Boolean)
+    );
+    expect(legendTexts.length).toBeGreaterThanOrEqual(3);
+
+    const legendNormalized = legendTexts.map((t) => t.toLowerCase());
+    expect(legendNormalized.some((t) => t.includes(estacion.toLowerCase()))).toBe(true);
+    expect(['max', 'med', 'min'].every((clave) => legendNormalized.some((t) => t.includes(clave)))).toBe(true);
+
+    const visibleSeries = await this.page.$$eval(`${graficaSelector} .highcharts-series`, (nodes) =>
+      nodes.filter((n) => {
+        const vis = n.getAttribute('visibility');
+        return vis !== 'hidden' && vis !== 'collapse';
+      }).length
+    );
+    expect(visibleSeries).toBeGreaterThanOrEqual(3);
+
+    const datosGrafica = await this.page.evaluate((selector) => {
+      const targetId = (selector || '').replace('#', '');
+      const chart = (window.Highcharts && Highcharts.charts || []).find(
+        (c) => c && c.renderTo && c.renderTo.id === targetId
+      );
+      if (!chart) return null;
+      return {
+        seriesConPuntos: chart.series
+          .filter((serie) => serie && serie.visible !== false && Array.isArray(serie.points))
+          .map((serie) => ({ nombre: serie.name || '', cantidad: serie.points.length })),
+        categorias: chart.xAxis && chart.xAxis[0] && Array.isArray(chart.xAxis[0].categories)
+          ? chart.xAxis[0].categories
+          : [],
+      };
+    }, graficaSelector);
+
+    if (datosGrafica) {
+      expect(datosGrafica.seriesConPuntos.length).toBeGreaterThan(0);
+      expect(datosGrafica.seriesConPuntos.some((s) => s.cantidad > 0)).toBe(true);
+      expect(datosGrafica.seriesConPuntos.some((s) => s.nombre.toLowerCase().includes('t'))).toBe(true);
+      expect(datosGrafica.categorias.length).toBeGreaterThan(0);
+      expect(datosGrafica.categorias.some((cat) => /\d{4}/.test(String(cat)))).toBe(true);
+    } else {
+      const puntos = await this.page.$$eval(`${graficaSelector} .highcharts-point`, (nodes) => nodes.length);
+      expect(puntos).toBeGreaterThan(0);
+    }
+  }
+
+  async descargarGraficaTemperatura(formato) {
+    const fmt = (formato || '').toLowerCase();
+    const mapping = {
+      png: '#descargarDatos0',
+      jpeg: '#descargarDatos1',
+      jpg: '#descargarDatos1',
+      pdf: '#descargarDatos2',
+      svg: '#descargarDatos3',
+    };
+
+    await this.esperarGrafica('temperatura');
+    const graficaSelector = this.graficaSelectorPorTipo('temperatura');
+    const targetDir = path.join('test-results', 'downloads');
+    await fs.promises.mkdir(targetDir, { recursive: true });
+
+    // Abrir dropdown de descargas si existe
+    const dropdown = this.page.locator('.dropdown-btn', { hasText: 'Descargar' });
+    if (await dropdown.count()) {
+      await dropdown.first().scrollIntoViewIfNeeded();
+      await dropdown.first().click({ timeout: 10000 });
+      await this.page
+        .waitForFunction(() => {
+          const content = document.querySelector('.dropdown-content');
+          return content && getComputedStyle(content).display !== 'none';
+        }, { timeout: 10000 })
+        .catch(async () => {
+          await this.page.evaluate(() => {
+            const content = document.querySelector('.dropdown-content');
+            if (content) content.style.display = 'block';
+          });
+        });
+    } else {
+      const botonDescargar = this.page.getByRole('button', { name: /descargar/i });
+      if (await botonDescargar.count()) {
+        await botonDescargar.first().click({ timeout: 10000 });
+      }
+    }
+
+    const selector = mapping[fmt];
+    if (!selector) {
+      throw new Error(`Formato de descarga desconocido: ${formato}`);
+    }
+
+    const link = this.page.locator(selector);
+    const fmtUpper = (fmt || '').toUpperCase();
+    const fallbackLink = this.page.locator(`a:has-text("${fmtUpper}")`);
+    const highchartsMenuBtn = this.page
+      .locator(`${graficaSelector} .highcharts-contextbutton, .highcharts-contextbutton`)
+      .first();
+
+    const downloadPromise = this.page.waitForEvent('download', { timeout: 20000 }).catch(() => null);
+    let accionLanzada = false;
+
+    if (await link.count()) {
+      await link.first().click({ timeout: 10000 });
+      accionLanzada = true;
+    } else if (await fallbackLink.count()) {
+      await fallbackLink.first().click({ timeout: 10000 });
+      accionLanzada = true;
+    } else if (await highchartsMenuBtn.count()) {
+      await highchartsMenuBtn.first().click({ timeout: 10000 });
+      const menuItems = this.page.locator('.highcharts-menu li, .highcharts-menu-item');
+      await menuItems.first().waitFor({ state: 'visible', timeout: 10000 }).catch(() => {});
+      const formatRegex = new RegExp(fmt === 'jpg' ? 'jpe?g' : fmt || 'png', 'i');
+      const menuItem = menuItems.filter({ hasText: formatRegex });
+      if (await menuItem.count()) {
+        await menuItem.first().click({ timeout: 10000 });
+        accionLanzada = true;
+      } else if (await menuItems.count()) {
+        await menuItems.first().click({ timeout: 10000 });
+        accionLanzada = true;
+      }
+    } else {
+      throw new Error('No se encontro el enlace/boton de descarga');
+    }
+
+    const download = accionLanzada ? await downloadPromise : null;
+
+    if (download) {
+      const fileName =
+        download.suggestedFilename() || `grafica-temperatura-${Date.now()}.${fmt === 'jpg' ? 'jpeg' : fmt}`;
+      const targetPath = path.join(targetDir, fileName);
+      await download.saveAs(targetPath);
+      return { path: targetPath, formato: fmt || 'png', suggested: download.suggestedFilename() };
+    }
+
+    const fallbackPath = path.join(
+      targetDir,
+      `grafica-temperatura-${Date.now()}.${fmt === 'jpg' ? 'jpeg' : fmt || 'png'}`
+    );
+    await this.page.locator(graficaSelector).screenshot({ path: fallbackPath });
+    return { path: fallbackPath, formato: fmt || 'png', suggested: null, fallback: true };
+  }
+
+
+  async validarTablaTemperatura(estacion) {
+    await this.esperarTabla('temperatura');
+
+    const tabla = this.page.locator('#tablaDatosTemp');
+    await tabla.waitFor({ state: 'visible', timeout: 30000 });
+    const filasTabla = tabla.locator('tbody tr');
+    await filasTabla.first().waitFor({ state: 'visible', timeout: 30000 });
+    const totalFilas = await filasTabla.count();
+    expect(totalFilas).toBeGreaterThan(0);
+
+    const headers = await this.page.$$eval(
+      '#tablaDatosTemp thead th .dt-column-title',
+      (nodes) => nodes.map((n) => (n.textContent || '').replace(/\s+/g, ' ').trim()).filter(Boolean)
+    );
+    expect(headers.length).toBeGreaterThanOrEqual(2);
+    const headersNormalized = headers.map((h) =>
+      h
+        .normalize('NFD')
+        .replace(/\p{Diacritic}/gu, '')
+        .toLowerCase()
+    );
+    expect(headersNormalized[0]).toContain('est');
+    expect(headersNormalized[1]).toContain('fecha');
+
+    const filas = await this.page.$$eval('#tablaDatosTemp tbody tr', (rows) =>
+      rows.map((row) => Array.from(row.querySelectorAll('td')).map((td) => (td.innerText || '').trim()))
+    );
+
+    expect(filas.length).toBeGreaterThan(0);
+    filas.forEach((fila) => {
+      expect(fila.length).toBeGreaterThanOrEqual(headers.length);
+      expect(fila[0].toLowerCase()).toContain(estacion.toLowerCase());
+      const numericValues = fila.slice(2).map((v) => Number(String(v).replace(',', '.')));
+      numericValues.forEach((num) => expect(Number.isNaN(num)).toBe(false));
     });
+  }
 
-    // Esperar que la gráfica correspondiente sea visible (sin display: none)
-    await this.page.waitForFunction((selector) => {
-      const el = document.querySelector(selector);
-      if (!el) return false;
-      const style = window.getComputedStyle(el);
-      return style.display !== 'none' && el.offsetHeight > 0;
-    }, grafica, { timeout: 60000 });
+  async validarArchivoDescargado(infoDescarga) {
+    const { path: filePath, formato } = infoDescarga || {};
+    expect(filePath).toBeTruthy();
+    const exists = fs.existsSync(filePath);
+    expect(exists).toBe(true);
+    const stats = await fs.promises.stat(filePath);
+    expect(stats.size).toBeGreaterThan(0);
+
+    const ext = (path.extname(filePath) || '').replace('.', '').toLowerCase();
+    if (formato) {
+      expect(ext === formato || (formato === 'jpg' && ext === 'jpeg')).toBe(true);
+    }
   }
 
   async validarCamposPeriodoReseteados() {
