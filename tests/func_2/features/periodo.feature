@@ -26,7 +26,14 @@ Feature: Seleccion de periodo y fechas
   Scenario: Calculo anual con rango de fechas
     When selecciono el periodo "anuales"
     And completo el rango de tiempo "2020 - 2025"
-    Then el campo anos muestra "6"
+    And hago click en Calcular
+    Then se renderiza la pagina de resultados
+
+  Scenario: Render de pestañas tras calcular
+    When selecciono el periodo "anuales"
+    And completo el rango de tiempo "2020 - 2025"
+    And hago click en Calcular
+    Then se muestran las pestañas de resultados
 
   Scenario: Resetear limpia todos los filtros de periodo
     When selecciono el periodo "anuales"

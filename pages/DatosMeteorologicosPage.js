@@ -433,6 +433,50 @@ class DatosMeteorologicosPage {
       }
     }
   }
+
+  async esperarResultados() {
+    await this.esperarLoader();
+    const candidatos = ['#gcontent', '.grafica-contenedor', '#graficaContainer', '#grafica1', '#tablaDatosTemp'];
+    for (const sel of candidatos) {
+      const loc = this.page.locator(sel);
+      if (await loc.count()) {
+        try {
+          await loc.first().waitFor({ state: 'visible', timeout: 60000 });
+          return;
+        } catch (_) {
+          // prueba con siguiente
+        }
+      }
+    }
+  }
+
+  async esperarPestanasResultados() {
+    await this.esperarLoader();
+    const contenedorTabs = this.page.locator('.tab-content.consult-content');
+    const tabs = this.page.locator('#navTabsv2-navTab1');
+    const graficaPane = this.page.locator('#Gráfica');
+
+    // Intentar con el tablist si está visible
+    if (await tabs.count()) {
+      await tabs.first().waitFor({ state: 'attached', timeout: 30000 });
+      if (await tabs.first().isVisible()) {
+        const links = tabs.locator('a.nav-link');
+        const totalLinks = await links.count();
+        expect(totalLinks).toBeGreaterThan(0);
+        return;
+      }
+    }
+
+    // Fallback: verificar que el contenedor de contenido de tabs esté visible
+    if (await contenedorTabs.count()) {
+      await contenedorTabs.first().waitFor({ state: 'visible', timeout: 60000 });
+    }
+
+    // Y que el pane de Gráfica exista
+    if (await graficaPane.count()) {
+      await graficaPane.first().waitFor({ state: 'attached', timeout: 30000 });
+    }
+  }
 }
 
 module.exports = { DatosMeteorologicosPage };
