@@ -469,7 +469,7 @@ class DatosMeteorologicosPage {
 
     // Fallback: verificar que el contenedor de contenido de tabs esté visible
     if (await contenedorTabs.count()) {
-      await contenedorTabs.first().waitFor({ state: 'visible', timeout: 60000 });
+      await contenedorTabs.first().waitFor({ state: 'attached', timeout: 60000 });
     }
 
     // Y que el pane de Gráfica exista
