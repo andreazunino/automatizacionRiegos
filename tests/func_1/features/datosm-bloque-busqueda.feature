@@ -53,3 +53,14 @@ Feature: Funcionamiento correcto del bloque de busqueda de datos meteorologicos
     And selecciono la estacion "Agost"
     And quito la estacion "Agost" desde la cruz
     Then "Agost" no debe aparecer como seleccionada
+
+  Scenario: Seleccionar 4 estaciones
+    When despliego las estaciones 
+    And selecciono la estacion "Agost"
+    And selecciono la estacion "Benavites"
+    And selecciono la estacion "Catral"
+    And selecciono la estacion "Cheste"
+    Then "Agost" debe aparecer como seleccionada
+    And "Benavites" debe aparecer como seleccionada
+    And "Catral" debe aparecer como seleccionada
+    And "Cheste" debe aparecer como seleccionada
