@@ -450,7 +450,7 @@ class DatosMeteorologicosPage {
     }
   }
 
-  async esperarPestanasResultados() {
+  async esperarResultadosCalculo() {
     await this.esperarLoader();
     const contenedorTabs = this.page.locator('.tab-content.consult-content');
     const tabs = this.page.locator('#navTabsv2-navTab1');
