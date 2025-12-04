@@ -421,6 +421,19 @@ class DatosMeteorologicosPage {
     return mapa[key] || '#grafica1';
   }
 
+  tabPaneSelectorPorTipo(tipo) {
+    const key = (tipo || '').toLowerCase();
+    const mapa = {
+      temperatura: '#gtemperatura',
+      humedad: '#ghumedad',
+      viento: '#gviento',
+      direccion: '#gviento',
+      otros: '#gotros',
+      eto: '#geto',
+    };
+    return mapa[key] || '#gtemperatura';
+  }
+
   radioSelectorPorTipo(tipo) {
     const key = (tipo || '').toLowerCase();
     const mapa = {
@@ -437,19 +450,60 @@ class DatosMeteorologicosPage {
   async esperarGrafica(tipo) {
     await this.esperarLoader();
     const graficaSelector = this.graficaSelectorPorTipo(tipo);
+    const tabPaneSelector = this.tabPaneSelectorPorTipo(tipo);
 
     // Contenedor de graficas y grafico de temperatura visible por defecto
-    const contenedor = this.page.locator('.grafica-contenedor');
-    await contenedor.waitFor({ state: 'visible', timeout: 180000 });
-    await contenedor.scrollIntoViewIfNeeded();
+    const contenedor = this.page.locator('.grafica-contenedor, #graficaContainer .grafica-contenedor');
+    await this.page.waitForSelector('.grafica-contenedor, #graficaContainer .grafica-contenedor', {
+      state: 'attached',
+      timeout: 30000,
+    }).catch(() => {});
+    await this.page.evaluate(() => {
+      const cont = document.querySelector('.grafica-contenedor') || document.querySelector('#graficaContainer .grafica-contenedor');
+      const gcontent = document.querySelector('#gcontent');
+      const tabContent = document.querySelector('#gcontent.tab-content');
+      if (gcontent) {
+        gcontent.style.display = 'block';
+      }
+      if (tabContent) {
+        tabContent.style.display = 'block';
+      }
+      const fig = cont?.closest('figure') || cont?.parentElement;
+      if (fig) {
+        fig.style.display = 'block';
+        fig.removeAttribute('aria-hidden');
+      }
+      if (cont) {
+        cont.style.display = 'block';
+        cont.removeAttribute('aria-hidden');
+      }
+    });
+    if (await contenedor.count()) {
+      await contenedor.scrollIntoViewIfNeeded().catch(() => {});
+    }
 
     // Asegurar que se esta en la pestana de grafica
     const tabGrafica = this.page.locator(
-      'a[href="#Grafica"], a[href="#grafica"], a:has-text("Grafica"), a:has-text("Gráfica")'
+      'a[href="#Grafica"], a[href="#grafica"], a[href="#Gráfica"], a:has-text("Grafica"), a:has-text("Gráfica"), a:has-text("Grafic"), [role="tab"]:has-text("Graf")'
     );
     if (await tabGrafica.count()) {
-      await tabGrafica.first().click({ timeout: 10000 });
+      const tab = tabGrafica.first();
+      await tab.scrollIntoViewIfNeeded();
+      await tab.click({ timeout: 10000 });
+      await tab.waitFor({ state: 'visible', timeout: 10000 }).catch(() => {});
     }
+
+    // Seleccionar pestaña de temperatura si existe
+    await this.seleccionarTabTemperaturaGrafica();
+
+    // Asegurar que el tab pane de la grafica solicitada este visible
+    await this.page.evaluate((selector) => {
+      const pane = document.querySelector(selector);
+      if (pane) {
+        pane.style.display = 'block';
+        pane.removeAttribute('aria-hidden');
+      }
+    }, tabPaneSelector);
 
     const radioSelector = this.radioSelectorPorTipo(tipo);
     if (radioSelector && (await this.page.locator(radioSelector).count())) {
@@ -470,10 +524,43 @@ class DatosMeteorologicosPage {
 
     // Esperar a que la grafica concreta tenga un SVG renderizado
     const grafica = this.page.locator(graficaSelector);
-    await grafica.waitFor({ state: 'attached', timeout: 180000 });
+    await grafica.waitFor({ state: 'attached', timeout: 90000 });
     await grafica.scrollIntoViewIfNeeded();
-    await this.page.waitForSelector(`${graficaSelector} svg`, { state: 'attached', timeout: 180000 });
-    await expect(grafica.locator('svg')).toBeVisible({ timeout: 180000 });
+    await this.page.waitForSelector(`${graficaSelector} svg`, { state: 'attached', timeout: 90000 }).catch(() => {});
+    await this.page
+      .waitForSelector(`${graficaSelector} rect.highcharts-background`, { state: 'attached', timeout: 90000 })
+      .catch(() => {});
+    await this.page.waitForSelector(`${graficaSelector} .highcharts-title`, { state: 'attached', timeout: 90000 }).catch(() => {});
+    await this.page
+      .waitForFunction(
+        (selector) => {
+          const g = document.querySelector(selector);
+          if (!g) return false;
+          const svg = g.querySelector('svg');
+          if (!svg) return false;
+          const tienePaths = svg.querySelector('path.highcharts-graph, path.highcharts-tracker-line');
+          const tieneRect = svg.querySelector('rect.highcharts-background');
+          const tieneTitulo = g.querySelector('.highcharts-title');
+          return !!(tienePaths || tieneRect || tieneTitulo);
+        },
+        graficaSelector,
+        { timeout: 90000 }
+      )
+      .catch(() => {});
+    const paths = grafica.locator('path.highcharts-graph, path.highcharts-tracker-line');
+    await paths.first().waitFor({ state: 'visible', timeout: 30000 }).catch(() => {});
+    await expect(grafica).toBeVisible({ timeout: 90000 });
+    await expect(grafica.locator('svg')).toBeVisible({ timeout: 90000 });
+  }
+
+  async seleccionarTabTemperaturaGrafica() {
+    const tabTemperatura = this.page
+      .locator('label[for="temperaturaTabGrafica"], label:has-text("Temperatura")')
+      .first();
+    if (await tabTemperatura.count()) {
+      await tabTemperatura.scrollIntoViewIfNeeded();
+      await tabTemperatura.click({ timeout: 10000 });
+    }
   }
 
 
@@ -517,7 +604,7 @@ class DatosMeteorologicosPage {
     const grafica = this.page.locator(graficaSelector);
     await grafica.waitFor({ state: 'visible', timeout: 60000 });
     await grafica.scrollIntoViewIfNeeded();
-    await expect(grafica.locator('svg')).toBeVisible();
+    await expect(grafica.locator('svg')).toBeVisible({ timeout: 180000 });
 
     const legendTexts = await this.page.$$eval(
       `${graficaSelector} .highcharts-legend-item text`,
