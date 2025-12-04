@@ -50,22 +50,10 @@ Then('el campo anos muestra {string}', async function (anos) {
   await this.datosPage.validarAnos(anos);
 });
 
-When('hago click en Resetear', async function () {
-  await this.datosPage.clickBoton('#limpiarRangos');
-});
-
-When('hago click en Calcular', async function () {
-  await this.datosPage.clickBoton('#calcular');
-});
-
 Then('los campos de periodo quedan limpios', async function () {
   await this.datosPage.validarCamposPeriodoReseteados();
 });
 
 Then('se renderiza la pagina de resultados', async function () {
   await this.datosPage.esperarResultados();
-});
-
-Then('se muestran las pestañas de resultados', async function () {
-  await this.datosPage.esperarPestanasResultados();
 });

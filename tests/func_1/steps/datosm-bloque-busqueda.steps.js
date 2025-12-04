@@ -98,6 +98,9 @@ When('hago click en el boton {string}', async function (nombre) {
     case 'Calcular':
       await this.datosPage.clickBoton('#calcular');
       break;
+    case 'Resetear':
+      await this.datosPage.clickBoton('#limpiarRangos');
+      break;
     default:
       throw new Error(`Boton no implementado: ${nombre}`);
   }
