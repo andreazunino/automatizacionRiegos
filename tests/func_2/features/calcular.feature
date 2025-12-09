@@ -59,3 +59,18 @@ Feature: Funcionamiento correcto al Calcular
     | Agost      | semanales| "01/01/2005 - 01/01/2025"  |
     | Agost      | mensuales| "01/2000 - 12/2015"        |
 
+    Scenario Outline: Render tras calcular con distintos periodos y fechas muy antiguas
+        When selecciono las estaciones <estaciones>
+        And selecciono el periodo "<periodos>"
+        And completo el rango de tiempo <tiempo>
+        And hago click en el boton "Calcular"
+        Then se muestran las pestañas de resultados 
+
+    Examples: Fechas desde 1900
+    | estaciones | periodos  | tiempo                     |
+    | Agost      | anuales   | "1910 - 1960"              |
+    | Agost      | mensuales | "01/1900 - 12/1950"        |
+    | Agost      | diarios   | "01/01/1900 - 01/01/1950"  |
+    | Agost      | horarios  | "01/01/1900 - 01/01/1950"  |
+    | Agost      | semanales | "01/01/1900 - 01/01/1950"  |
+
