@@ -74,7 +74,7 @@ class DatosMeteorologicosPage {
 
   provinciaPattern(nombre) {
     const mapa = {
-      castellon: 'Castell[oó]n|Castell[oó]',
+      castellon: 'Castell',
       valencia: 'Valencia|València',
       alicante: 'Alicante|Alacant',
     };
@@ -418,8 +418,7 @@ class DatosMeteorologicosPage {
     for (const sel of inputs) {
       const input = this.page.locator(sel);
       if (await input.count()) {
-        const val = await input.inputValue();
-        expect(val).toBe('');
+        await expect(input).toHaveValue('');
       }
     }
 
