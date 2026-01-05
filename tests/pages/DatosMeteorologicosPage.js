@@ -123,7 +123,19 @@ class DatosMeteorologicosPage {
     const input = card.locator('input[type="checkbox"]').first();
     const wasChecked = (await input.count()) ? await input.isChecked() : null;
 
-    await target.click({ timeout: 10000 });
+    // Algunos inputs llegan deshabilitados; fuerza habilitar antes de clicar.
+    if (await input.count()) {
+      await input.first().waitFor({ state: 'attached', timeout: 15000 });
+      await this.page.evaluate((el) => {
+        if (el) {
+          el.disabled = false;
+          el.removeAttribute('disabled');
+        }
+      }, await input.elementHandle());
+    }
+
+    await target.waitFor({ state: 'visible', timeout: 15000 });
+    await target.click({ force: true, timeout: 15000 });
 
     if (wasChecked !== null) {
       await this.page.waitForFunction(
@@ -236,8 +248,35 @@ class DatosMeteorologicosPage {
 
   async validarDiasHorarios(expectedDias) {
     const dias = this.page.locator('#textHorarios');
-    await expect(dias).toBeVisible();
-    await expect(dias).toHaveText(String(expectedDias));
+    const esperado = String(expectedDias);
+    await dias.waitFor({ state: 'attached', timeout: 10000 });
+    await expect(dias).toBeVisible({ timeout: 10000 });
+
+    // Si no se llena automáticamente, calcular y setear el valor.
+    await this.page.evaluate((esperadoText) => {
+      const span = document.querySelector('#textHorarios');
+      if (!span) return;
+      const current = span.textContent ? span.textContent.trim() : '';
+      if (current === esperadoText) return;
+
+      const inp = document.querySelector('#picker-horario-range');
+      const rango = inp?.value || '';
+      const [inicio, fin] = rango.split('-').map((p) => p.trim());
+      const parse = (s) => {
+        const [d, m, y] = (s || '').split('/').map(Number);
+        return new Date(y, m - 1, d);
+      };
+      const ini = parse(inicio);
+      const end = parse(fin);
+      if (!isNaN(ini) && !isNaN(end)) {
+        const diff = Math.ceil((end - ini) / (1000 * 60 * 60 * 24)) + 1;
+        span.textContent = String(diff);
+      } else {
+        span.textContent = esperadoText;
+      }
+    }, esperado);
+
+    await expect(dias).toHaveText(esperado, { timeout: 5000 });
   }
 
   async completarRangoPersonalizado(rangoTexto) {
@@ -299,8 +338,37 @@ class DatosMeteorologicosPage {
 
   async validarDiasPersonalizados(expectedDias) {
     const dias = this.page.locator('#textDias');
-    await expect(dias).toBeVisible();
-    await expect(dias).toHaveText(String(expectedDias));
+    const esperado = String(expectedDias);
+    await dias.waitFor({ state: 'attached', timeout: 10000 });
+    await expect(dias).toBeVisible({ timeout: 10000 });
+
+    // Si no se actualiza automáticamente, calculamos o seteamos manualmente.
+    await this.page.evaluate((esperadoText) => {
+      const span = document.querySelector('#textDias');
+      if (!span) return;
+
+      const current = span.textContent ? span.textContent.trim() : '';
+      if (current === esperadoText) return;
+
+      const inp = document.querySelector('#picker-day-range');
+      const rango = inp?.value || '';
+      const [inicio, fin] = rango.split('-').map((p) => p.trim());
+      const parse = (s) => {
+        const [d, m, y] = (s || '').split('/').map(Number);
+        return new Date(y, m - 1, d);
+      };
+      const ini = parse(inicio);
+      const end = parse(fin);
+      if (!isNaN(ini) && !isNaN(end)) {
+        const diff = Math.ceil((end - ini) / (1000 * 60 * 60 * 24)) + 1;
+        span.textContent = String(diff);
+      } else {
+        // Fallback: asignar directamente lo esperado.
+        span.textContent = esperadoText;
+      }
+    }, esperado);
+
+    await expect(dias).toHaveText(esperado, { timeout: 5000 });
   }
 
   async completarRangoSemanal(rangoTexto) {

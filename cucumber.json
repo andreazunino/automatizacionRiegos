@@ -3,7 +3,6 @@
     "formatOptions": {
       "snippetInterface": "async-await"
     },
-    "publishQuiet": true,
     "dryRun": false,
     "require": [
       "tests/**/steps/**/*.js",

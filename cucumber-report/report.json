@@ -1,0 +1,4876 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-del-bloque-de-busqueda-de-datos-meteorologicos;carga-correcta-de-los-elementos",
+        "keyword": "Scenario",
+        "line": 5,
+        "name": "Carga correcta de los elementos",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 182841800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 16707766200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 6,
+            "name": "la pagina deberia cargar correctamente",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3324600500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "deberia ver las opciones de \"provincias\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 33030999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "deberia ver las opciones de \"estado\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 15583099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "deberia ver el desplegable de \"estaciones\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 19563900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 10,
+            "name": "deberia ver el boton \"Eliminar seleccion\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:34"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 42094400
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 49785799
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-del-bloque-de-busqueda-de-datos-meteorologicos;con-estado-\"todas\",-mostrar-todas-las-provincias",
+        "keyword": "Scenario",
+        "line": 12,
+        "name": "Con estado \"Todas\", mostrar todas las provincias",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 177281500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 15618400899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 13,
+            "name": "hago click en estado \"Todas\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:44"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 61152200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "despliego las estaciones",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:57"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 139820500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "debo ver todas las estaciones",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:61"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 7706500
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 44153999
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-del-bloque-de-busqueda-de-datos-meteorologicos;seleccionar-estacion",
+        "keyword": "Scenario",
+        "line": 17,
+        "name": "Seleccionar estacion",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 152870100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 14632117200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 18,
+            "name": "despliego las estaciones",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:57"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 110353699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 19,
+            "name": "selecciono la estacion \"Agost\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:77"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 773878099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 20,
+            "name": "\"Agost\" debe aparecer como seleccionada",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:85"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 10354399
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 27738600
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-del-bloque-de-busqueda-de-datos-meteorologicos;eliminar-todas-las-estaciones-seleccionadas",
+        "keyword": "Scenario",
+        "line": 22,
+        "name": "Eliminar todas las estaciones seleccionadas",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 217884300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 13114949699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 23,
+            "name": "despliego las estaciones",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:57"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 96930999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 24,
+            "name": "selecciono la estacion \"Pedralba\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:77"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 803001799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 25,
+            "name": "hago click en el boton \"Eliminar seleccion\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:93"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 213792200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 26,
+            "name": "debe quitar todas las selecciones de estaciones",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:109"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 6338800
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 21501700
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-del-bloque-de-busqueda-de-datos-meteorologicos;con-estado-\"activas\",-mostrarlas-provincias-activas",
+        "keyword": "Scenario",
+        "line": 28,
+        "name": "Con estado \"Activas\", mostrarlas provincias Activas",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 224273000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 12036557099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 29,
+            "name": "hago click en estado \"Activas\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:44"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 22748400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 30,
+            "name": "despliego las estaciones",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:57"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 90657600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 31,
+            "name": "debo ver las estaciones Activas",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:73"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 7874800
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 23066999
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-del-bloque-de-busqueda-de-datos-meteorologicos;cuando-provincias-\"alicante\",-mostrar-estaciones-alicante",
+        "keyword": "Scenario",
+        "line": 33,
+        "name": "Cuando provincias \"Alicante\", mostrar estaciones Alicante",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 122504000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 10334722199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 34,
+            "name": "hago click en provincias \"Castellon\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:65"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3235931100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 35,
+            "name": "hago click en provincias \"Valencia\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:65"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3164756299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 36,
+            "name": "despliego las estaciones",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:57"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 59426299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 37,
+            "name": "debo ver las estaciones \"Alicante\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:69"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 37652600
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 21380299
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-del-bloque-de-busqueda-de-datos-meteorologicos;cuando-provincias-\"castellon\",-mostrar-estaciones-castellon",
+        "keyword": "Scenario",
+        "line": 39,
+        "name": "Cuando provincias \"Castellon\", mostrar estaciones Castellon",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 117968400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 13291190699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 40,
+            "name": "hago click en provincias \"Alicante\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:65"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3090141100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 41,
+            "name": "hago click en provincias \"Valencia\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:65"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3105092699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 42,
+            "name": "despliego las estaciones",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:57"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 45427299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 43,
+            "name": "debo ver las estaciones \"Castellon\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:69"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 6732799
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 7835600
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-del-bloque-de-busqueda-de-datos-meteorologicos;cuando-provincias-\"valencia\",-mostrar-estaciones-valencia",
+        "keyword": "Scenario",
+        "line": 45,
+        "name": "Cuando provincias \"Valencia\", mostrar estaciones Valencia",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 66634500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 10704702199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 46,
+            "name": "hago click en provincias \"Castellon\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:65"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3097840799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 47,
+            "name": "hago click en provincias \"Alicante\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:65"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3125567600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 48,
+            "name": "despliego las estaciones",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:57"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 34275499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 49,
+            "name": "debo ver las estaciones \"Valencia\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:69"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 7234999
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3538000
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-del-bloque-de-busqueda-de-datos-meteorologicos;quitar-una-estación-desde-la-cruz",
+        "keyword": "Scenario",
+        "line": 51,
+        "name": "Quitar una estación desde la cruz",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 55812600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 9610312100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 52,
+            "name": "despliego las estaciones",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:57"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 55822699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 53,
+            "name": "selecciono la estacion \"Agost\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:77"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 670558300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 54,
+            "name": "quito la estacion \"Agost\" desde la cruz",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:81"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 46915000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 55,
+            "name": "\"Agost\" no debe aparecer como seleccionada",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:89"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2146799
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4340800
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-del-bloque-de-busqueda-de-datos-meteorologicos;seleccionar-4-estaciones",
+        "keyword": "Scenario",
+        "line": 57,
+        "name": "Seleccionar 4 estaciones",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 53202900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 9299160199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 58,
+            "name": "despliego las estaciones",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:57"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 41347600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 59,
+            "name": "selecciono la estacion \"Agost\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:77"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 631413599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 60,
+            "name": "selecciono la estacion \"Benavites\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:77"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 617165500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 61,
+            "name": "selecciono la estacion \"Catral\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:77"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 630142499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 62,
+            "name": "selecciono la estacion \"Cheste\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:77"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 622256400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 63,
+            "name": "\"Agost\" debe aparecer como seleccionada",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:85"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3021800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "\"Benavites\" debe aparecer como seleccionada",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:85"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1745500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 65,
+            "name": "\"Catral\" debe aparecer como seleccionada",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:85"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1497299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 66,
+            "name": "\"Cheste\" debe aparecer como seleccionada",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:85"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2039900
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2857999
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "funcionamiento-correcto-del-bloque-de-busqueda-de-datos-meteorologicos",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Funcionamiento correcto del bloque de busqueda de datos meteorologicos",
+    "tags": [],
+    "uri": "tests\\func_1\\features\\datosm-bloque-busqueda.feature"
+  },
+  {
+    "description": "  Como usuario curioso\n  Quiero visitar el sitio de Playwright\n  Para validar que la documentacion esta disponible",
+    "elements": [
+      {
+        "description": "",
+        "id": "buscar-informacion-sobre-playwright;abrir-el-sitio-oficial",
+        "keyword": "Scenario",
+        "line": 6,
+        "name": "Abrir el sitio oficial",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 53201700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "que abro el sitio \"https://playwright.dev\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\common.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3098524800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 8,
+            "name": "navego al menu de \"Docs\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\search_playwright.steps.js:4"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 89755299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 9,
+            "name": "veo un titulo que contiene \"Playwright\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\search_playwright.steps.js:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4961599
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4392400
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "buscar-informacion-sobre-playwright",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Buscar informacion sobre Playwright",
+    "tags": [],
+    "uri": "tests\\func_1\\features\\search_playwright.feature"
+  },
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-al-calcular;render-tras-calcular-con-varias-estaciones-y-distintos-periodos",
+        "keyword": "Scenario Outline",
+        "line": 14,
+        "name": "Render tras calcular con varias estaciones y distintos periodos",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 38580900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8742334400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "selecciono las estaciones Agost",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 81210599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "selecciono el periodo \"anuales\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 10633199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "completo el rango de tiempo \"2020 - 2025\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 39628399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "hago click en el boton \"Calcular\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:93"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 33216300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "se muestran las pestañas de resultados",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3017035299
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3531699
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-al-calcular;render-tras-calcular-con-varias-estaciones-y-distintos-periodos",
+        "keyword": "Scenario Outline",
+        "line": 15,
+        "name": "Render tras calcular con varias estaciones y distintos periodos",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 49979900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 10740931099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "selecciono las estaciones Agost, Benavites",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 701195700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "selecciono el periodo \"anuales\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8884599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "completo el rango de tiempo \"2020 - 2025\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 30204999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "hago click en el boton \"Calcular\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:93"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 45448000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "se muestran las pestañas de resultados",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3019359299
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3501400
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-al-calcular;render-tras-calcular-con-varias-estaciones-y-distintos-periodos",
+        "keyword": "Scenario Outline",
+        "line": 16,
+        "name": "Render tras calcular con varias estaciones y distintos periodos",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 42972500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 11029595900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "selecciono las estaciones Agost, Benavites, Burriana",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1350961299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "selecciono el periodo \"anuales\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8378999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "completo el rango de tiempo \"2020 - 2025\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 35504099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "hago click en el boton \"Calcular\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:93"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 40816200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "se muestran las pestañas de resultados",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3009874299
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4916599
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-al-calcular;render-tras-calcular-con-varias-estaciones-y-distintos-periodos",
+        "keyword": "Scenario Outline",
+        "line": 17,
+        "name": "Render tras calcular con varias estaciones y distintos periodos",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 51755299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 16769152100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "selecciono las estaciones Agost, Benavites, Burriana, Sagunt",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2008892699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "selecciono el periodo \"anuales\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 13120399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "completo el rango de tiempo \"2020 - 2025\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 32323299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "hago click en el boton \"Calcular\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:93"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 35815499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "se muestran las pestañas de resultados",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3023227299
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3658399
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-al-calcular;render-tras-calcular-con-varias-estaciones-y-distintos-periodos",
+        "keyword": "Scenario Outline",
+        "line": 21,
+        "name": "Render tras calcular con varias estaciones y distintos periodos",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 54963300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 14900016600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "selecciono las estaciones Agost",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 84843499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "selecciono el periodo \"horarios\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8251199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "completo el rango de tiempo \"01/11/2020 - 01/12/2025\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 32660899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "hago click en el boton \"Calcular\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:93"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 43557100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "se muestran las pestañas de resultados",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3013494799
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3994700
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-al-calcular;render-tras-calcular-con-varias-estaciones-y-distintos-periodos",
+        "keyword": "Scenario Outline",
+        "line": 22,
+        "name": "Render tras calcular con varias estaciones y distintos periodos",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 58671700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 7868190700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "selecciono las estaciones Agost, Benavites",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 731753500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "selecciono el periodo \"horarios\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 9165500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "completo el rango de tiempo \"01/11/2020 - 01/12/2025\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 38263200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "hago click en el boton \"Calcular\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:93"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 38753299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "se muestran las pestañas de resultados",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3013476300
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5339199
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-al-calcular;render-tras-calcular-con-varias-estaciones-y-distintos-periodos",
+        "keyword": "Scenario Outline",
+        "line": 23,
+        "name": "Render tras calcular con varias estaciones y distintos periodos",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 40280999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 15687375899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "selecciono las estaciones Agost, Benavites, Burriana",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1371426199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "selecciono el periodo \"horarios\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 11181299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "completo el rango de tiempo \"01/11/2020 - 01/12/2025\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 31191299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "hago click en el boton \"Calcular\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:93"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 33809800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "se muestran las pestañas de resultados",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3016396000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5171999
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-al-calcular;render-tras-calcular-con-varias-estaciones-y-distintos-periodos",
+        "keyword": "Scenario Outline",
+        "line": 24,
+        "name": "Render tras calcular con varias estaciones y distintos periodos",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 49421199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8303580599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "selecciono las estaciones Agost, Benavites, Burriana, Sagunt",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1971381800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "selecciono el periodo \"horarios\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8661499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "completo el rango de tiempo \"01/11/2020 - 01/12/2025\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 33088900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "hago click en el boton \"Calcular\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:93"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 41056500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "se muestran las pestañas de resultados",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3024548799
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4739600
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-al-calcular;render-tras-calcular-con-varias-estaciones-y-distintos-periodos",
+        "keyword": "Scenario Outline",
+        "line": 28,
+        "name": "Render tras calcular con varias estaciones y distintos periodos",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 48584399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 11202422599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "selecciono las estaciones Agost",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 84877199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "selecciono el periodo \"diarios\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8698299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "completo el rango de tiempo \"01/11/2020 - 01/12/2025\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 43906400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "hago click en el boton \"Calcular\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:93"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 43913699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "se muestran las pestañas de resultados",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3015647400
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4707900
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-al-calcular;render-tras-calcular-con-varias-estaciones-y-distintos-periodos",
+        "keyword": "Scenario Outline",
+        "line": 29,
+        "name": "Render tras calcular con varias estaciones y distintos periodos",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 42671799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 12399536800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "selecciono las estaciones Agost, Benavites",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 730924699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "selecciono el periodo \"diarios\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 13981499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "completo el rango de tiempo \"01/11/2020 - 01/12/2025\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 45184300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "hago click en el boton \"Calcular\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:93"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 45412899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "se muestran las pestañas de resultados",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3021159700
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3633600
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-al-calcular;render-tras-calcular-con-varias-estaciones-y-distintos-periodos",
+        "keyword": "Scenario Outline",
+        "line": 30,
+        "name": "Render tras calcular con varias estaciones y distintos periodos",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 44882799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8020355299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "selecciono las estaciones Agost, Benavites, Burriana",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1320858699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "selecciono el periodo \"diarios\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8580599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "completo el rango de tiempo \"01/11/2020 - 01/12/2025\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 47375600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "hago click en el boton \"Calcular\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:93"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 46868699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "se muestran las pestañas de resultados",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3014041700
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3494899
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-al-calcular;render-tras-calcular-con-varias-estaciones-y-distintos-periodos",
+        "keyword": "Scenario Outline",
+        "line": 31,
+        "name": "Render tras calcular con varias estaciones y distintos periodos",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 43885799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 11507816300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "selecciono las estaciones Agost, Benavites, Burriana, Sagunt",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2437684200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "selecciono el periodo \"diarios\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 12394400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "completo el rango de tiempo \"01/11/2020 - 01/12/2025\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 55252900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "hago click en el boton \"Calcular\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:93"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 35394299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "se muestran las pestañas de resultados",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3012415500
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4103899
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-al-calcular;render-tras-calcular-con-varias-estaciones-y-distintos-periodos",
+        "keyword": "Scenario Outline",
+        "line": 35,
+        "name": "Render tras calcular con varias estaciones y distintos periodos",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 39093699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 10893144700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "selecciono las estaciones Agost",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 97793900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "selecciono el periodo \"semanales\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 9665600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "completo el rango de tiempo \"01/11/2020 - 01/12/2025\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 30669300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "hago click en el boton \"Calcular\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:93"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 40531499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "se muestran las pestañas de resultados",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3016824600
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3383700
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-al-calcular;render-tras-calcular-con-varias-estaciones-y-distintos-periodos",
+        "keyword": "Scenario Outline",
+        "line": 36,
+        "name": "Render tras calcular con varias estaciones y distintos periodos",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 43651200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 9382902800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "selecciono las estaciones Agost, Benavites",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 698235999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "selecciono el periodo \"semanales\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 7366500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "completo el rango de tiempo \"01/11/2020 - 01/12/2025\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 30749099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "hago click en el boton \"Calcular\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:93"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 30419400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "se muestran las pestañas de resultados",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3026781900
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2926600
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-al-calcular;render-tras-calcular-con-varias-estaciones-y-distintos-periodos",
+        "keyword": "Scenario Outline",
+        "line": 37,
+        "name": "Render tras calcular con varias estaciones y distintos periodos",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 45237599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 14412956899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "selecciono las estaciones Agost, Benavites, Burriana",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1415663300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "selecciono el periodo \"semanales\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 11469499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "completo el rango de tiempo \"01/11/2020 - 01/12/2025\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 46451400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "hago click en el boton \"Calcular\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:93"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 41690599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "se muestran las pestañas de resultados",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3030941900
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4339599
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-al-calcular;render-tras-calcular-con-varias-estaciones-y-distintos-periodos",
+        "keyword": "Scenario Outline",
+        "line": 38,
+        "name": "Render tras calcular con varias estaciones y distintos periodos",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 65015699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 10688447500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "selecciono las estaciones Agost, Benavites, Burriana, Sagunt",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1993775599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "selecciono el periodo \"semanales\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 14347599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "completo el rango de tiempo \"01/11/2020 - 01/12/2025\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 49491600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "hago click en el boton \"Calcular\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:93"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 45906300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "se muestran las pestañas de resultados",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3021070000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3293200
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-al-calcular;render-tras-calcular-con-varias-estaciones-y-distintos-periodos",
+        "keyword": "Scenario Outline",
+        "line": 42,
+        "name": "Render tras calcular con varias estaciones y distintos periodos",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 75530599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 15163494999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "selecciono las estaciones Agost",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 102866199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "selecciono el periodo \"mensuales\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 9892099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "completo el rango de tiempo \"01/2020 - 12/2025\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 40576399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "hago click en el boton \"Calcular\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:93"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 46865099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "se muestran las pestañas de resultados",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3024465599
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3743699
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-al-calcular;render-tras-calcular-con-varias-estaciones-y-distintos-periodos",
+        "keyword": "Scenario Outline",
+        "line": 43,
+        "name": "Render tras calcular con varias estaciones y distintos periodos",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 56875900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 11721498699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "selecciono las estaciones Agost, Benavites",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 721186900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "selecciono el periodo \"mensuales\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 7805899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "completo el rango de tiempo \"01/2020 - 12/2025\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 31583799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "hago click en el boton \"Calcular\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:93"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 45575300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "se muestran las pestañas de resultados",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3014201799
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3827099
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-al-calcular;render-tras-calcular-con-varias-estaciones-y-distintos-periodos",
+        "keyword": "Scenario Outline",
+        "line": 44,
+        "name": "Render tras calcular con varias estaciones y distintos periodos",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 46848400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 9244528799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "selecciono las estaciones Agost, Benavites, Burriana",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1318545800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "selecciono el periodo \"mensuales\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8310100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "completo el rango de tiempo \"01/2020 - 12/2025\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 31637800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "hago click en el boton \"Calcular\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:93"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 45908599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "se muestran las pestañas de resultados",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3016047199
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4629100
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-al-calcular;render-tras-calcular-con-varias-estaciones-y-distintos-periodos",
+        "keyword": "Scenario Outline",
+        "line": 45,
+        "name": "Render tras calcular con varias estaciones y distintos periodos",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 41866799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 9744518900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "selecciono las estaciones Agost, Benavites, Burriana, Sagunt",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1952864800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "selecciono el periodo \"mensuales\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8166700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "completo el rango de tiempo \"01/2020 - 12/2025\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 32321600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "hago click en el boton \"Calcular\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:93"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 45273999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "se muestran las pestañas de resultados",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3017688499
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3906300
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-al-calcular;render-tras-calcular-con-distintos-periodos-y-rangos-de-tiempo-amplios",
+        "keyword": "Scenario Outline",
+        "line": 56,
+        "name": "Render tras calcular con distintos periodos y rangos de tiempo amplios",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 49000600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 10680629100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 48,
+            "name": "selecciono las estaciones Agost",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 125499299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 49,
+            "name": "selecciono el periodo \"anuales\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 13338699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 50,
+            "name": "completo el rango de tiempo \"2000 - 2015\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 35983400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 51,
+            "name": "hago click en el boton \"Calcular\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:93"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 40648400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 52,
+            "name": "se muestran las pestañas de resultados",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3026265999
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3860899
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-al-calcular;render-tras-calcular-con-distintos-periodos-y-rangos-de-tiempo-amplios",
+        "keyword": "Scenario Outline",
+        "line": 57,
+        "name": "Render tras calcular con distintos periodos y rangos de tiempo amplios",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 62957599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 9348644899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 48,
+            "name": "selecciono las estaciones Agost",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 85109899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 49,
+            "name": "selecciono el periodo \"horarios\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8117299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 50,
+            "name": "completo el rango de tiempo \"01/01/2010 - 01/01/2025\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 26633499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 51,
+            "name": "hago click en el boton \"Calcular\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:93"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 31324900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 52,
+            "name": "se muestran las pestañas de resultados",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3016428099
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3992099
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-al-calcular;render-tras-calcular-con-distintos-periodos-y-rangos-de-tiempo-amplios",
+        "keyword": "Scenario Outline",
+        "line": 58,
+        "name": "Render tras calcular con distintos periodos y rangos de tiempo amplios",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 49594600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 9072344700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 48,
+            "name": "selecciono las estaciones Agost",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 160407200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 49,
+            "name": "selecciono el periodo \"diarios\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 36619999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 50,
+            "name": "completo el rango de tiempo \"01/01/2005 - 01/01/2025\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 117439000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 51,
+            "name": "hago click en el boton \"Calcular\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:93"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 73985400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 52,
+            "name": "se muestran las pestañas de resultados",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3042628800
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 8163599
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-al-calcular;render-tras-calcular-con-distintos-periodos-y-rangos-de-tiempo-amplios",
+        "keyword": "Scenario Outline",
+        "line": 59,
+        "name": "Render tras calcular con distintos periodos y rangos de tiempo amplios",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 112328299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 14638876300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 48,
+            "name": "selecciono las estaciones Agost",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 94547200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 49,
+            "name": "selecciono el periodo \"semanales\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 13801099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 50,
+            "name": "completo el rango de tiempo \"01/01/2005 - 01/01/2025\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 43799200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 51,
+            "name": "hago click en el boton \"Calcular\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:93"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 54340699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 52,
+            "name": "se muestran las pestañas de resultados",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3017613500
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3616299
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-al-calcular;render-tras-calcular-con-distintos-periodos-y-rangos-de-tiempo-amplios",
+        "keyword": "Scenario Outline",
+        "line": 60,
+        "name": "Render tras calcular con distintos periodos y rangos de tiempo amplios",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 51715800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 14769435799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 48,
+            "name": "selecciono las estaciones Agost",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 102381300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 49,
+            "name": "selecciono el periodo \"mensuales\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8277899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 50,
+            "name": "completo el rango de tiempo \"01/2000 - 12/2015\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 26922499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 51,
+            "name": "hago click en el boton \"Calcular\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:93"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 47460800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 52,
+            "name": "se muestran las pestañas de resultados",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3021748399
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3297499
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-al-calcular;render-tras-calcular-con-distintos-periodos-y-fechas-muy-antiguas",
+        "keyword": "Scenario Outline",
+        "line": 71,
+        "name": "Render tras calcular con distintos periodos y fechas muy antiguas",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 48460199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 12599161100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 63,
+            "name": "selecciono las estaciones Agost",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 95602300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "selecciono el periodo \"anuales\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8662699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 65,
+            "name": "completo el rango de tiempo \"1910 - 1960\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 28738100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 66,
+            "name": "hago click en el boton \"Calcular\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:93"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 43655299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 67,
+            "name": "se muestran las pestañas de resultados",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3023827599
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3570500
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-al-calcular;render-tras-calcular-con-distintos-periodos-y-fechas-muy-antiguas",
+        "keyword": "Scenario Outline",
+        "line": 72,
+        "name": "Render tras calcular con distintos periodos y fechas muy antiguas",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 54691700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 9820873499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 63,
+            "name": "selecciono las estaciones Agost",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 97403700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "selecciono el periodo \"mensuales\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8691200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 65,
+            "name": "completo el rango de tiempo \"01/1900 - 12/1950\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 31381900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 66,
+            "name": "hago click en el boton \"Calcular\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:93"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 35702400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 67,
+            "name": "se muestran las pestañas de resultados",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3021416100
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3933599
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-al-calcular;render-tras-calcular-con-distintos-periodos-y-fechas-muy-antiguas",
+        "keyword": "Scenario Outline",
+        "line": 73,
+        "name": "Render tras calcular con distintos periodos y fechas muy antiguas",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 48481400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 12521853499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 63,
+            "name": "selecciono las estaciones Agost",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 91567199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "selecciono el periodo \"diarios\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8436600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 65,
+            "name": "completo el rango de tiempo \"01/01/1900 - 01/01/1950\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 40421399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 66,
+            "name": "hago click en el boton \"Calcular\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:93"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 72031399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 67,
+            "name": "se muestran las pestañas de resultados",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3027956400
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3804099
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-al-calcular;render-tras-calcular-con-distintos-periodos-y-fechas-muy-antiguas",
+        "keyword": "Scenario Outline",
+        "line": 74,
+        "name": "Render tras calcular con distintos periodos y fechas muy antiguas",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 57030099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 16083862499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 63,
+            "name": "selecciono las estaciones Agost",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 99174599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "selecciono el periodo \"horarios\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8237399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 65,
+            "name": "completo el rango de tiempo \"01/01/1900 - 01/01/1950\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 30376700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 66,
+            "name": "hago click en el boton \"Calcular\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:93"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 46712799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 67,
+            "name": "se muestran las pestañas de resultados",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3014662500
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3661800
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "funcionamiento-correcto-al-calcular;render-tras-calcular-con-distintos-periodos-y-fechas-muy-antiguas",
+        "keyword": "Scenario Outline",
+        "line": 75,
+        "name": "Render tras calcular con distintos periodos y fechas muy antiguas",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 38380300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8608916199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 63,
+            "name": "selecciono las estaciones Agost",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 101895100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 64,
+            "name": "selecciono el periodo \"semanales\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8447699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 65,
+            "name": "completo el rango de tiempo \"01/01/1900 - 01/01/1950\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 31573800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 66,
+            "name": "hago click en el boton \"Calcular\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:93"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 37860400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 67,
+            "name": "se muestran las pestañas de resultados",
+            "match": {
+              "location": "tests\\func_2\\steps\\calcular.steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3014836999
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 6160900
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "funcionamiento-correcto-al-calcular",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Funcionamiento correcto al Calcular",
+    "tags": [],
+    "uri": "tests\\func_2\\features\\calcular.feature"
+  },
+  {
+    "description": "  Para tener un caso rapido\n  Quiero abrir una pagina estable\n  Y validar su contenido principal",
+    "elements": [
+      {
+        "description": "",
+        "id": "validar-sitio-de-ejemplo;capturar-pagina-de-comunidad",
+        "keyword": "Scenario",
+        "line": 6,
+        "name": "Capturar pagina de comunidad",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 54592799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "que abro el sitio \"https://playwright.dev/community/welcome\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\common.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3522467499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 8,
+            "name": "la pagina muestra el encabezado \"Welcome\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\example_domain.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 42639799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "guardo una captura llamada \"community-welcome\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\example_domain.steps.js:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 131150799
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3948800
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "validar-sitio-de-ejemplo",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Validar sitio de ejemplo",
+    "tags": [],
+    "uri": "tests\\func_2\\features\\example_domain.feature"
+  },
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "seleccion-de-periodo-y-fechas;calculo-semihorario-con-rango-de-fechas",
+        "keyword": "Scenario",
+        "line": 6,
+        "name": "Calculo semihorario con rango de fechas",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 38737299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8857192500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 4,
+            "name": "selecciono la estacion \"Agost\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:77"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 95581400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "selecciono el periodo \"horarios\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 9499899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "completo el rango de tiempo \"01/11/2020 - 01/12/2025\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 30229900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 9,
+            "name": "el campo dias horarios muestra \"1857\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:33"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4771300
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3780800
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "seleccion-de-periodo-y-fechas;calculo-personalizado-con-rango-de-fechas",
+        "keyword": "Scenario",
+        "line": 11,
+        "name": "Calculo personalizado con rango de fechas",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 53130000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 9122574300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 4,
+            "name": "selecciono la estacion \"Agost\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:77"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 123275099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 12,
+            "name": "selecciono el periodo \"diarios\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 12292199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "completo el rango de tiempo \"01/11/2020 - 01/12/2025\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 55505400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 14,
+            "name": "el campo dias personalizados muestra \"1857\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:37"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 6719900
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4891999
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "seleccion-de-periodo-y-fechas;calculo-semanal-con-rango-de-fechas",
+        "keyword": "Scenario",
+        "line": 16,
+        "name": "Calculo semanal con rango de fechas",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 49779300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 12950749899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 4,
+            "name": "selecciono la estacion \"Agost\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:77"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 96778500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 17,
+            "name": "selecciono el periodo \"semanales\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 9231099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 18,
+            "name": "completo el rango de tiempo \"01/11/2020 - 01/12/2025\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 33495499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 19,
+            "name": "el campo dias semanales muestra \"1857\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:41"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 6319999
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3355600
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "seleccion-de-periodo-y-fechas;calculo-mensual-con-rango-de-fechas",
+        "keyword": "Scenario",
+        "line": 21,
+        "name": "Calculo mensual con rango de fechas",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 46543700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 10676158300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 4,
+            "name": "selecciono la estacion \"Agost\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:77"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 92602799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 22,
+            "name": "selecciono el periodo \"mensuales\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 9574200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 23,
+            "name": "completo el rango de tiempo \"01/2020 - 12/2025\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 31957300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 24,
+            "name": "el campo meses muestra \"72\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:45"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5383099
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3753400
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "seleccion-de-periodo-y-fechas;calculo-anual-con-rango-de-fechas",
+        "keyword": "Scenario",
+        "line": 26,
+        "name": "Calculo anual con rango de fechas",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 49889899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 15540412200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 4,
+            "name": "selecciono la estacion \"Agost\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:77"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 109300999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 27,
+            "name": "selecciono el periodo \"anuales\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 9184100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 28,
+            "name": "completo el rango de tiempo \"2020 - 2025\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 27143999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 29,
+            "name": "hago click en el boton \"Calcular\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:93"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 34241500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 30,
+            "name": "se renderiza la pagina de resultados",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:57"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 63032451499
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 5248299
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "seleccion-de-periodo-y-fechas;resetear-limpia-todos-los-filtros-de-periodo",
+        "keyword": "Scenario",
+        "line": 32,
+        "name": "Resetear limpia todos los filtros de periodo",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 63170499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "que entro en la pagina de datos meteorologicos",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 16156435199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 4,
+            "name": "selecciono la estacion \"Agost\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:77"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 111701699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 33,
+            "name": "selecciono el periodo \"anuales\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 13513900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 34,
+            "name": "completo el rango de tiempo \"2020 - 2025\"",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 31502699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 35,
+            "name": "hago click en el boton \"Resetear\"",
+            "match": {
+              "location": "tests\\func_1\\steps\\datosm-bloque-busqueda.steps.js:93"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 33688100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 36,
+            "name": "los campos de periodo quedan limpios",
+            "match": {
+              "location": "tests\\func_2\\steps\\periodo.steps.js:53"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 23351000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4424300
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "seleccion-de-periodo-y-fechas",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Seleccion de periodo y fechas",
+    "tags": [],
+    "uri": "tests\\func_2\\features\\periodo.feature"
+  }
+]

@@ -8,7 +8,7 @@ const {
   After,
 } = require('@cucumber/cucumber');
 const { chromium } = require('playwright');
-const { DatosMeteorologicosPage } = require('../../pages/DatosMeteorologicosPage');
+const { DatosMeteorologicosPage } = require('../pages/DatosMeteorologicosPage');
 
 setDefaultTimeout(180 * 1000);
 

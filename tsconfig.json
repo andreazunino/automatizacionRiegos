@@ -9,6 +9,6 @@
     "allowJs": true,
     "noEmit": true
   },
-  "include": ["pages/**/*.js", "tests/**/*.js"],
+  "include": ["tests/pages/**/*.js", "tests/**/*.js"],
   "exclude": ["node_modules", "dist"]
 }
