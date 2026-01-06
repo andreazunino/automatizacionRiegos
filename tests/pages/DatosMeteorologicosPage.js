@@ -32,7 +32,9 @@ class DatosMeteorologicosPage {
   }
 
   async cargaOpcionesBusqueda(selector, cantidad) {
-    await expect(this.page.locator(`#filtroBusqueda ${selector}`)).toHaveCount(cantidad);
+    const filtro = this.page.locator('div#filtroBusqueda').first();
+    await expect(filtro).toBeVisible();
+    await expect(filtro.locator(selector)).toHaveCount(cantidad);
   }
 
   async cargaDesplegable(opcion) {
@@ -167,6 +169,11 @@ class DatosMeteorologicosPage {
     const boton = this.page.locator(selector);
     await expect(boton).toBeVisible();
     await boton.click();
+
+    // Botones que recalculan o limpian muestran loader; espera a que finalice.
+    if (['#limpiarRangos', '#calcular'].includes(selector)) {
+      await this.esperarLoader();
+    }
   }
 
   async seleccionarEstacion(estacion) {
@@ -477,11 +484,13 @@ class DatosMeteorologicosPage {
   }
 
   async validarCamposPeriodoReseteados() {
+    await this.esperarLoader();
+
     // Select vuelve al placeholder
     const select = this.page.locator('#rangoTemporal');
     await expect(await select.inputValue()).toBe('');
 
-    // Inputs de rango vacíos
+    // Inputs de rango vacios
     const inputs = ['#picker-horario-range', '#picker-day-range', '#picker-semana', '#picker-mes', '#picker-anyo'];
     for (const sel of inputs) {
       const input = this.page.locator(sel);
@@ -490,18 +499,25 @@ class DatosMeteorologicosPage {
       }
     }
 
-    // Textos de resumen vacíos o en 0
+    // Textos de resumen vacios o en 0 (espera a que se limpien tras el reset)
     const resumenes = ['#textHorarios', '#textDias', '#textSemanas', '#textMes', '#textAnyos'];
+    const permitidos = ['', '0'];
     for (const sel of resumenes) {
-      const span = this.page.locator(sel);
-      if (await span.count()) {
-        const text = (await span.innerText()).trim();
-        expect(['', '0']).toContain(text);
-      }
+      if (!(await this.page.locator(sel).count())) continue;
+      await this.page.waitForFunction(
+        (s, allowed) => {
+          const el = document.querySelector(s);
+          if (!el) return true;
+          const text = (el.innerText || '').trim();
+          return allowed.includes(text);
+        },
+        sel,
+        permitidos,
+        { timeout: 10000 }
+      );
     }
   }
-
-  async esperarResultados() {
+async esperarResultados() {
     await this.esperarLoader();
     const candidatos = ['#gcontent', '.grafica-contenedor', '#graficaContainer', '#grafica1', '#tablaDatosTemp'];
     for (const sel of candidatos) {
