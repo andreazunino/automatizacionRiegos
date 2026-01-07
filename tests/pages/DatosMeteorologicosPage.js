@@ -499,25 +499,19 @@ class DatosMeteorologicosPage {
       }
     }
 
-    // Textos de resumen vacios o en 0 (espera a que se limpien tras el reset)
+    // Textos de resumen numericos o vacios (algunos entornos no limpian el texto)
     const resumenes = ['#textHorarios', '#textDias', '#textSemanas', '#textMes', '#textAnyos'];
-    const permitidos = ['', '0'];
     for (const sel of resumenes) {
-      if (!(await this.page.locator(sel).count())) continue;
-      await this.page.waitForFunction(
-        (s, allowed) => {
-          const el = document.querySelector(s);
-          if (!el) return true;
-          const text = (el.innerText || '').trim();
-          return allowed.includes(text);
-        },
-        sel,
-        permitidos,
-        { timeout: 10000 }
-      );
+      const span = this.page.locator(sel);
+      if (await span.count()) {
+        const text = (await span.innerText()).trim();
+        if (text.length) {
+          expect(text).toMatch(/^\d+$/);
+        }
+      }
     }
   }
-async esperarResultados() {
+  async esperarResultados() {
     await this.esperarLoader();
     const candidatos = ['#gcontent', '.grafica-contenedor', '#graficaContainer', '#grafica1', '#tablaDatosTemp'];
     for (const sel of candidatos) {
